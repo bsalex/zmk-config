@@ -68,6 +68,15 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        dot_arrow: dot_arrow {
+            compatible = "zmk,behavior-hold-tap";
+            label = "DOT_ARROW";
+            bindings = <&arrow>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
     };
 
     macros {
@@ -83,6 +92,13 @@
             #binding-cells = <0>;
             bindings = <&kp DOWN &kp DOWN_ARROW &kp DOWN &kp DOWN &kp DOWN>;
             label = "DOWN_5";
+        };
+
+        arrow: arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS &kp GT &kp LC(SPACE)>;
+            label = "ARROW";
         };
     };
 
@@ -110,10 +126,10 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&gresc_ctrl     &kp N1  &kp N2     &kp N3    &kp N4        &kp N5                                                                  &kp N6       &kp N7     &kp N8     &kp N9    &kp N0    &kp BACKSPACE
-&kp TAB         &kp Q   &kp W      &kp E     &kp R         &kp T                                                                   &kp Y        &kp U      &kp I      &kp O     &kp P     &kp BACKSLASH
-&kp CAPSLOCK    &kp A   &kp S      &kp D     &kp F         &kp G                                                                   &kp H        &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LEFT_SHIFT  &kp Z   &kp X      &kp C     &kp V         &kp B        &none                              &none                   &kp N        &kp M      &kp COMMA  &kp DOT   &kp FSLH  &f4_enter N0 ENTER
+&gresc_ctrl     &kp N1  &kp N2     &kp N3    &kp N4        &kp N5                                                                  &kp N6       &kp N7     &kp N8     &kp N9            &kp N0    &kp BACKSPACE
+&kp TAB         &kp Q   &kp W      &kp E     &kp R         &kp T                                                                   &kp Y        &kp U      &kp I      &kp O             &kp P     &kp BACKSLASH
+&kp CAPSLOCK    &kp A   &kp S      &kp D     &kp F         &kp G                                                                   &kp H        &kp J      &kp K      &kp L             &kp SEMI  &kp SQT
+&kp LEFT_SHIFT  &kp Z   &kp X      &kp C     &kp V         &kp B        &none                              &none                   &kp N        &kp M      &kp COMMA  &dot_arrow 0 DOT  &kp FSLH  &f4_enter N0 ENTER
                         &kp LCTRL  &kp LALT  &kp LEFT_GUI  &lt 1 SPACE  &double_tap_enter_space_hold_l1    &double_space_to_enter  &lt 2 SPACE  &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
