@@ -75,6 +75,13 @@
             tapping-term-ms = <400>;
             flavor = "tap-preferred";
         };
+
+        shift_caps: shift_caps {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SHIFT_CAPS";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_SHIFT>, <&kp CAPSLOCK>;
+        };
     };
 
     macros {
@@ -125,11 +132,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&mt ESCAPE GRAVE         &kp N1                             &kp N2                             &kp N3                             &kp N4                             &kp N5                                                         &kp N6                             &kp N7                             &kp N8                                     &kp N9                             &kp N0    &kp BACKSPACE
-&kp TAB                  &delayed_tap_hold_one LG(LC(Q)) Q  &delayed_tap_hold_one LG(LS(W)) W  &delayed_tap_hold_one LG(LS(E)) E  &kp R                              &delayed_tap_hold_one LG(LC(T)) T                              &kp Y                              &kp U                              &kp I                                      &delayed_tap_hold_one LG(LS(O)) O  &kp P     &kp BACKSLASH
-&mt LEFT_SHIFT CAPSLOCK  &delayed_tap_hold_one LG(LS(A)) A  &delayed_tap_hold_one LG(LS(S)) S  &delayed_tap_hold_one LG(LS(D)) D  &kp F                              &kp G                                                          &delayed_tap_hold_one LC(LG(H)) H  &kp J                              &kp K                                      &kp L                              &kp SEMI  &kp SQT
-&kp LCTRL                &kp Z                              &kp X                              &delayed_tap_hold_one LG(LS(C)) C  &delayed_tap_hold_one LS(LG(V)) V  &kp B                              &none          &none        &kp N                              &delayed_tap_hold_one LS(LG(M)) M  &delayed_tap_hold_one LS(LG(COMMA)) COMMA  &dot_arrow 0 DOT                   &kp FSLH  &f4_enter N0 ENTER
-                                                            &kp LCTRL                          &kp LALT                           &kp LEFT_GUI                       &lt 1 SPACE                        &lt 1 SPACE    &lt 2 SPACE  &lt 2 SPACE                        &kp RCTRL                          &kp RALT                                   &mo 3
+&mt ESCAPE GRAVE  &kp N1                             &kp N2                             &kp N3                             &kp N4                             &kp N5                                                         &kp N6                             &kp N7                             &kp N8                                     &kp N9                             &kp N0    &kp BACKSPACE
+&kp TAB           &delayed_tap_hold_one LG(LC(Q)) Q  &delayed_tap_hold_one LG(LS(W)) W  &delayed_tap_hold_one LG(LS(E)) E  &kp R                              &delayed_tap_hold_one LG(LC(T)) T                              &kp Y                              &kp U                              &kp I                                      &delayed_tap_hold_one LG(LS(O)) O  &kp P     &kp BACKSLASH
+&shift_caps       &delayed_tap_hold_one LG(LS(A)) A  &delayed_tap_hold_one LG(LS(S)) S  &delayed_tap_hold_one LG(LS(D)) D  &kp F                              &kp G                                                          &delayed_tap_hold_one LC(LG(H)) H  &kp J                              &kp K                                      &kp L                              &kp SEMI  &kp SQT
+&kp LCTRL         &kp Z                              &kp X                              &delayed_tap_hold_one LG(LS(C)) C  &delayed_tap_hold_one LS(LG(V)) V  &kp B                              &none          &none        &kp N                              &delayed_tap_hold_one LS(LG(M)) M  &delayed_tap_hold_one LS(LG(COMMA)) COMMA  &dot_arrow 0 DOT                   &kp FSLH  &f4_enter N0 ENTER
+                                                     &kp LCTRL                          &kp LALT                           &kp LEFT_GUI                       &lt 1 SPACE                        &lt 1 SPACE    &lt 2 SPACE  &lt 2 SPACE                        &kp RCTRL                          &kp RALT                                   &mo 3
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
