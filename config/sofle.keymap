@@ -18,14 +18,7 @@
 / {
     // Activate ADJUST layer by pressing raise and lower
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        adjust_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
+    conditional_layers { compatible = "zmk,conditional-layers"; };
 
     behaviors {
         double_space_to_enter: double_space_to_enter {
@@ -142,7 +135,7 @@
 &kp TAB                  &shift_cmd_on_hold LG(LS(Q)) Q  &shift_cmd_on_hold LG(LS(W)) W  &shift_cmd_on_hold LG(LS(E)) E  &kp R         &kp T                                                                   &kp Y                           &kp U      &kp I      &shift_cmd_on_hold LG(LS(O)) O  &kp P     &kp BACKSLASH
 &mt LEFT_SHIFT CAPSLOCK  &shift_cmd_on_hold LG(LS(A)) A  &shift_cmd_on_hold LG(LS(S)) S  &shift_cmd_on_hold LG(LS(D)) D  &kp F         &kp G                                                                   &shift_cmd_on_hold LC(LG(H)) H  &kp J      &kp K      &kp L                           &kp SEMI  &kp SQT
 &kp LCTRL                &kp Z                           &kp X                           &shift_cmd_on_hold LG(LS(C)) C  &kp V         &kp B        &none                              &none                   &kp N                           &kp M      &kp COMMA  &dot_arrow 0 DOT                &kp FSLH  &f4_enter N0 ENTER
-                                                         &kp LCTRL                       &kp LALT                        &kp LEFT_GUI  &lt 1 SPACE  &double_tap_enter_space_hold_l1    &double_space_to_enter  &lt 2 SPACE                     &kp RCTRL  &kp RALT   &kp RGUI
+                                                         &kp LCTRL                       &kp LALT                        &kp LEFT_GUI  &lt 1 SPACE  &double_tap_enter_space_hold_l1    &double_space_to_enter  &lt 2 SPACE                     &kp RCTRL  &kp RALT   &mo 3
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
