@@ -93,16 +93,6 @@
             flavor = "tap-preferred";
         };
 
-        tap_hold_tap_once: tap_hold_tap_once {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TAP_HOLD_TAP_ONCE";
-            bindings = <&only_tap_none_hold>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <400>;
-            flavor = "tap-preferred";
-        };
-
         only_tap_none_hold: only_tap_none_hold {
             compatible = "zmk,behavior-hold-tap";
             label = "ONLY_TAP_NONE_HOLD";
@@ -110,6 +100,16 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
+        };
+
+        plain_paste_on_hold: plain_paste_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "PLAIN_PASTE_ON_HOLD";
+            bindings = <&paste_plain>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
         };
     };
 
@@ -133,6 +133,13 @@
             #binding-cells = <0>;
             bindings = <&kp MINUS &kp GT &kp LC(SPACE)>;
             label = "ARROW";
+        };
+
+        paste_plain: paste_plain {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(V))>;
+            label = "PASTE_PLAIN";
         };
     };
 
@@ -161,11 +168,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&mt ESCAPE GRAVE  &kp N1                             &kp N2                             &kp N3                             &kp N4                  &kp N5                                                         &kp N6                             &kp N7                             &kp N8                                     &kp N9                             &kp N0    &kp BACKSPACE
-&kp TAB           &delayed_tap_hold_one LG(LC(Q)) Q  &delayed_tap_hold_one LG(LS(W)) W  &delayed_tap_hold_one LG(LS(E)) E  &kp R                   &delayed_tap_hold_one LG(LC(T)) T                              &kp Y                              &kp U                              &kp I                                      &delayed_tap_hold_one LG(LS(O)) O  &kp P     &kp BACKSLASH
-&shift_caps       &delayed_tap_hold_one LG(LS(A)) A  &delayed_tap_hold_one LG(LS(S)) S  &delayed_tap_hold_one LG(LS(D)) D  &kp F                   &kp G                                                          &delayed_tap_hold_one LC(LG(H)) H  &kp J                              &kp K                                      &kp L                              &kp SEMI  &kp SQT
-&kp LCTRL         &kp Z                              &kp X                              &delayed_tap_hold_one LG(LS(C)) C  &tap_hold_tap_once LG(LS(V)) V  &kp B                              &none          &none        &kp N                              &delayed_tap_hold_one LS(LG(M)) M  &delayed_tap_hold_one LS(LG(COMMA)) COMMA  &dot_arrow 0 DOT                   &kp FSLH  &f4_enter N0 ENTER
-                                                     &kp LCTRL                          &kp LALT                           &kp LEFT_GUI            &lt 1 SPACE                        &lt 1 SPACE    &lt 2 SPACE  &lt 2 SPACE                        &kp RCTRL                          &only_hold LA(Y) 0                         &mo 3
+&mt ESCAPE GRAVE  &kp N1                             &kp N2                             &kp N3                             &kp N4                    &kp N5                                                         &kp N6                             &kp N7                             &kp N8                                     &kp N9                             &kp N0    &kp BACKSPACE
+&kp TAB           &delayed_tap_hold_one LG(LC(Q)) Q  &delayed_tap_hold_one LG(LS(W)) W  &delayed_tap_hold_one LG(LS(E)) E  &kp R                     &delayed_tap_hold_one LG(LC(T)) T                              &kp Y                              &kp U                              &kp I                                      &delayed_tap_hold_one LG(LS(O)) O  &kp P     &kp BACKSLASH
+&shift_caps       &delayed_tap_hold_one LG(LS(A)) A  &delayed_tap_hold_one LG(LS(S)) S  &delayed_tap_hold_one LG(LS(D)) D  &kp F                     &kp G                                                          &delayed_tap_hold_one LC(LG(H)) H  &kp J                              &kp K                                      &kp L                              &kp SEMI  &kp SQT
+&kp LCTRL         &kp Z                              &kp X                              &delayed_tap_hold_one LG(LS(C)) C  &plain_paste_on_hold 0 V  &kp B                              &none          &none        &kp N                              &delayed_tap_hold_one LS(LG(M)) M  &delayed_tap_hold_one LS(LG(COMMA)) COMMA  &dot_arrow 0 DOT                   &kp FSLH  &f4_enter N0 ENTER
+                                                     &kp LCTRL                          &kp LALT                           &kp LEFT_GUI              &lt 1 SPACE                        &lt 1 SPACE    &lt 2 SPACE  &lt 2 SPACE                        &kp RCTRL                          &only_hold LA(Y) 0                         &mo 3
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
