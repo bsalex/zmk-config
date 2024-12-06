@@ -111,6 +111,25 @@
             flavor = "tap-preferred";
             tapping-term-ms = <400>;
         };
+
+        monosnap_image_copy: monosnap_image_copy {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MONOSNAP_IMAGE_COPY";
+            bindings = <&kp C>, <&kp LA(LG(C))>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LGUI)>;
+        };
+
+        copy_stuff: copy_stuff {
+            compatible = "zmk,behavior-hold-tap";
+            label = "COPY_STUFF";
+            bindings = <&kp>, <&monosnap_image_copy>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+            flavor = "tap-preferred";
+        };
     };
 
     macros {
@@ -171,7 +190,7 @@
 &mt ESCAPE GRAVE  &kp N1                             &kp N2                             &kp N3                             &kp N4                    &kp N5                                                         &kp N6                             &kp N7                             &kp N8                                     &kp N9                             &kp N0    &kp BACKSPACE
 &kp TAB           &delayed_tap_hold_one LG(LC(Q)) Q  &delayed_tap_hold_one LG(LS(W)) W  &delayed_tap_hold_one LG(LS(E)) E  &kp R                     &delayed_tap_hold_one LG(LC(T)) T                              &kp Y                              &kp U                              &kp I                                      &delayed_tap_hold_one LG(LS(O)) O  &kp P     &kp BACKSLASH
 &shift_caps       &delayed_tap_hold_one LG(LS(A)) A  &delayed_tap_hold_one LG(LS(S)) S  &delayed_tap_hold_one LG(LS(D)) D  &kp F                     &kp G                                                          &delayed_tap_hold_one LC(LG(H)) H  &kp J                              &kp K                                      &kp L                              &kp SEMI  &kp SQT
-&kp LCTRL         &kp Z                              &kp X                              &delayed_tap_hold_one LG(LS(C)) C  &plain_paste_on_hold 0 V  &kp B                              &none          &none        &kp N                              &delayed_tap_hold_one LS(LG(M)) M  &delayed_tap_hold_one LS(LG(COMMA)) COMMA  &dot_arrow 0 DOT                   &kp FSLH  &f4_enter N0 ENTER
+&kp LCTRL         &kp Z                              &kp X                              &copy_stuff LG(LS(C)) 0            &plain_paste_on_hold 0 V  &kp B                              &none          &none        &kp N                              &delayed_tap_hold_one LS(LG(M)) M  &delayed_tap_hold_one LS(LG(COMMA)) COMMA  &dot_arrow 0 DOT                   &kp FSLH  &f4_enter N0 ENTER
                                                      &kp LCTRL                          &kp LALT                           &kp LEFT_GUI              &lt 1 SPACE                        &lt 1 SPACE    &lt 2 SPACE  &lt 2 SPACE                        &kp RCTRL                          &only_hold LA(Y) 0                         &mo 3
             >;
 
@@ -214,7 +233,7 @@
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                    &trans     &trans    &up_5     &trans     &trans   &trans
 &trans      &kp INS       &kp PSCRN     &kp K_CMENU   &trans        &trans                          &kp PG_UP  &trans    &kp UP    &trans     &trans   &trans
 &trans      &kp LALT      &kp LCTRL     &kp LSHFT     &trans        &kp CLCK                        &kp HOME   &kp LEFT  &kp DOWN  &kp RIGHT  &kp END  &trans
-&trans      &kp K_UNDO    &kp K_CUT     &kp K_COPY    &kp K_PASTE   &trans        &trans    &trans  &trans     &trans    &down_5   &trans     &trans   &trans
+&trans      &kp K_UNDO    &kp K_CUT     &kp K_COPY    &kp K_PASTE   &trans        &trans    &trans  &trans     &trans    &down_5   &trans     &trans   &kp LS(ENTER)
                           &trans        &trans        &trans        &mo 5         &trans    &trans  &trans     &trans    &trans    &trans
             >;
 
