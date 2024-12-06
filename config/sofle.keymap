@@ -292,11 +292,11 @@
 
         code_nav {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans            &trans  &trans             &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans            &trans  &kp LG(LC(O))      &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &kp LC(LG(LEFT))  &trans  &kp LC(LG(RIGHT))  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans            &trans  &trans             &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans            &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans               &trans  &trans             &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &mt LA(LS(U)) LA(U)  &trans  &kp LG(LC(O))      &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &kp LC(LG(LEFT))     &trans  &kp LC(LG(RIGHT))  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans               &trans  &trans             &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans               &trans  &trans
             >;
         };
     };
