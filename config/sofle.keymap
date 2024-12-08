@@ -260,7 +260,7 @@
 &trans      &kp INS       &kp PSCRN     &kp K_CMENU   &trans        &trans                          &kp PG_UP  &trans    &kp UP    &trans     &trans   &trans
 &trans      &kp LALT      &kp LCTRL     &kp LSHFT     &trans        &kp CLCK                        &kp HOME   &kp LEFT  &kp DOWN  &kp RIGHT  &kp END  &trans
 &trans      &kp K_UNDO    &kp K_CUT     &kp K_COPY    &kp K_PASTE   &trans        &trans    &trans  &trans     &trans    &down_5   &trans     &trans   &kp LS(ENTER)
-                          &trans        &trans        &trans        &mo 5         &trans    &trans  &trans     &trans    &trans    &trans
+                          &trans        &trans        &trans        &trans        &trans    &trans  &trans     &trans    &trans    &trans
             >;
         };
 
@@ -283,6 +283,15 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans               &trans  &trans             &trans  &kp LC(ENTER)
                 &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans               &trans  &trans
             >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        code_nav {
+            if-layers = <2 3>;
+            then-layer = <5>;
         };
     };
 };
