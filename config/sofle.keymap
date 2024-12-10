@@ -164,11 +164,19 @@
         ctrl_esc: ctrl_esc {
             compatible = "zmk,behavior-mod-morph";
             label = "CTRL_ESC";
-            bindings = <&kp ESC>, <&kp LC(GRAVE)>;
+            bindings = <&shift_esc>, <&kp LC(GRAVE)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL)>;
-            keep-mods = <(MOD_LSFT|MOD_LCTL)>;
+        };
+
+        shift_esc: shift_esc {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SHIFT_ESC";
+            bindings = <&kp ESCAPE>, <&kp TILDE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
         };
     };
 
