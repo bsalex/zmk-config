@@ -183,7 +183,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "ESC_TAPDANCE";
             #binding-cells = <0>;
-            bindings = <&ctrl_esc>, <&backtick_wrap>, <&triple_backtick>;
+            bindings = <&ctrl_esc>, <&backtick_wrap>;
         };
     };
 
