@@ -240,7 +240,7 @@
         backtick_wrap: backtick_wrap {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp K_CUT &kp GRAVE &kp GRAVE &kp LEFT_ARROW &kp K_PASTE>;
+            bindings = <&kp LG(X) &kp GRAVE &kp GRAVE &kp LEFT_ARROW &kp LG(V)>;
             label = "BACKTICK_WRAP";
         };
     };
