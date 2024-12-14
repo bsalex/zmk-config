@@ -288,6 +288,12 @@
             layers = <0>;
             timeout-ms = <200>;
         };
+
+        shift_tab_caps {
+            bindings = <&kp CAPSLOCK>;
+            key-positions = <24 12>;
+            layers = <0>;
+        };
     };
 
     keymap {
