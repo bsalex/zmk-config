@@ -186,7 +186,7 @@
             #binding-cells = <0>;
             bindings = <&ctrl_esc>, <&backtick_wrap>, <&triple_backtick>;
 
-            tapping-term-ms = <500>;
+            tapping-term-ms = <200>;
         };
 
         undo_once_on_hold: undo_once_on_hold {
@@ -284,13 +284,6 @@
 
     combos {
         compatible = "zmk,combos";
-
-        two_key_enter {
-            bindings = <&kp ENTER>;
-            key-positions = <34 35>;
-            layers = <0>;
-            timeout-ms = <200>;
-        };
 
         shift_tab_caps {
             bindings = <&kp CAPSLOCK>;
