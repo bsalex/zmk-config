@@ -186,7 +186,7 @@
             #binding-cells = <0>;
             bindings = <&ctrl_esc>, <&backtick_wrap>, <&triple_backtick>;
 
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
         };
 
         undo_once_on_hold: undo_once_on_hold {
