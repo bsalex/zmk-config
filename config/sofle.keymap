@@ -13,11 +13,11 @@
 
 #define MAC_BASE_LAYER 0
 #define LINUX_LAYER 1
-#define SYMBOLS_LAYER 2
+#define SYMBOLS_2_LAYER 2
 #define NAVIGATION_LAYER 3
 #define CONNECTIVITY_LAYER 4
 #define CODE_NAVIGATION_LAYER 5
-#define SYMBOLS_2_LAYER 6
+#define SYMBOLS_LAYER 6
 
 / {
     behaviors {
@@ -322,14 +322,14 @@
             >;
         };
 
-        symbols {
-            display-name = "symbols";
+        symbols_2 {
+            display-name = "symbols_2";
             bindings = <
-&kp TILDE  &kp F1    &kp F2     &kp F3    &kp F4    &kp F5                       &kp F6          &kp F7                 &kp F8                &kp F9          &kp F10    &kp F11
-&kp GRAVE  &kp N1    &kp N2     &kp N3    &kp N4    &kp N5                       &kp UNDERSCORE  &kp RIGHT_BRACE        &kp LEFT_BRACE        &kp UNDERSCORE  &kp EQUAL  &kp F12
-&trans     &kp EXCL  &kp AT     &kp HASH  &kp DLLR  &kp PRCNT                    &kp PLUS        &kp RIGHT_PARENTHESIS  &kp LEFT_PARENTHESIS  &kp EQUAL       &kp SLASH  &kp PIPE
-&trans     &none     &kp MINUS  &kp PLUS  &none     &none      &trans    &trans  &kp MINUS       &kp RBKT               &kp LBKT              &kp COLON       &kp BSLH   &trans
-                     &trans     &trans    &trans    &trans     &trans    &trans  &trans          &kp LC(LG(SPACE))      &trans                &trans
+&trans  &kp LS(EXCL)   &kp LS(LPAR)  &kp LS(RPAR)   &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(LBRC)   &kp SQT       &kp LS(DQT)    &kp LS(RBRC)  &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(CARET)  &kp EQUAL     &kp LS(UNDER)  &kp LS(DLLR)  &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LBKT       &kp LS(PIPE)  &kp MINUS      &kp RBKT      &kp FSLH       &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                       &trans        &kp PLUS       &trans        &trans         &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -365,16 +365,15 @@
             >;
         };
 
-        symbols_2 {
+        symbols {
+            display-name = "symbols";
             bindings = <
-&trans  &kp LS(EXCL)   &kp LS(LPAR)  &kp LS(RPAR)   &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LS(LBRC)   &kp SQT       &kp LS(DQT)    &kp LS(RBRC)  &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LS(CARET)  &kp EQUAL     &kp LS(UNDER)  &kp LS(DLLR)  &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LBKT       &kp LS(PIPE)  &kp MINUS      &kp RBKT      &kp FSLH       &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                       &trans        &kp PLUS       &trans        &trans         &trans    &trans  &trans  &trans  &trans  &trans
+&kp TILDE  &kp F1    &kp F2     &kp F3    &kp F4    &kp F5                       &kp F6          &kp F7                 &kp F8                &kp F9          &kp F10    &kp F11
+&kp GRAVE  &kp N1    &kp N2     &kp N3    &kp N4    &kp N5                       &kp UNDERSCORE  &kp RIGHT_BRACE        &kp LEFT_BRACE        &kp UNDERSCORE  &kp EQUAL  &kp F12
+&trans     &kp EXCL  &kp AT     &kp HASH  &kp DLLR  &kp PRCNT                    &kp PLUS        &kp RIGHT_PARENTHESIS  &kp LEFT_PARENTHESIS  &kp EQUAL       &kp SLASH  &kp PIPE
+&trans     &none     &kp MINUS  &kp PLUS  &none     &none      &trans    &trans  &kp MINUS       &kp RBKT               &kp LBKT              &kp COLON       &kp BSLH   &trans
+                     &trans     &trans    &trans    &trans     &trans    &trans  &trans          &kp LC(LG(SPACE))      &trans                &trans
             >;
-
-            label = "symbols_2";
         };
     };
 
