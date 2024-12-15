@@ -304,7 +304,7 @@
 
         shift_tab_caps {
             bindings = <&kp CAPSLOCK>;
-            key-positions = <24 12>;
+            key-positions = <>;
             layers = <0>;
         };
     };
