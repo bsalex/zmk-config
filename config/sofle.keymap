@@ -348,11 +348,11 @@
         navigation {
             display-name = "navigation";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans     &trans        &up_5     &trans         &trans   &kp LA(BACKSPACE)
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP  &kp LA(LEFT)  &kp UP    &kp LA(RIGHT)  &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &kp LEFT      &kp DOWN  &kp RIGHT      &kp END  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans        &down_5   &trans         &trans   &kp LS(ENTER)
-                &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans        &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans     &trans        &kp LA(UP)    &trans         &trans   &kp LA(BACKSPACE)
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP  &kp LA(LEFT)  &kp UP        &kp LA(RIGHT)  &trans   &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &kp LEFT      &kp DOWN      &kp RIGHT      &kp END  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans        &kp LA(DOWN)  &trans         &trans   &kp LS(ENTER)
+                &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans        &trans        &trans
             >;
         };
 
