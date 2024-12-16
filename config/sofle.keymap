@@ -218,6 +218,16 @@
             flavor = "tap-preferred";
             tapping-term-ms = <300>;
         };
+
+        paste_link_on_hold: paste_link_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "PASTE_LINK_ON_HOLD";
+            bindings = <&paste_link_macro>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <300>;
+        };
     };
 
     macros {
@@ -297,6 +307,17 @@
             bindings = <&kp CAPSLOCK>;
             label = "CAPS_LOCK_ONCE";
         };
+
+        paste_link_macro: paste_link_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LG(K)>,
+                <&macro_wait_time 500>,
+                <&kp LG(V) &kp ENTER>;
+
+            label = "PASTE_LINK_MACRO";
+        };
     };
 
     combos {
@@ -337,11 +358,11 @@
         symbols_2 {
             display-name = "symbols_2";
             bindings = <
-&trans  &kp LS(EXCL)   &kp LS(LPAR)  &kp LS(RPAR)   &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LS(LBRC)   &kp SQT       &kp LS(DQT)    &kp LS(RBRC)  &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LS(CARET)  &kp EQUAL     &kp LS(UNDER)  &kp LS(DLLR)  &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LBKT       &kp LS(PIPE)  &kp MINUS      &kp RBKT      &kp FSLH       &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                       &trans        &kp PLUS       &trans        &trans         &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(EXCL)   &kp LS(LPAR)  &kp LS(RPAR)   &kp SEMI                             &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(LBRC)   &kp SQT       &kp LS(DQT)    &kp LS(RBRC)                         &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(CARET)  &kp EQUAL     &kp LS(UNDER)  &kp LS(DLLR)                         &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LBKT       &kp LS(PIPE)  &kp MINUS      &paste_link_on_hold 0 RIGHT_BRACKET  &kp FSLH       &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                       &trans        &kp PLUS       &trans                               &trans         &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
