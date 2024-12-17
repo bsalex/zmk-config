@@ -346,6 +346,18 @@
             key-positions = <>;
             layers = <0>;
         };
+
+        mo_docs_layer {
+            bindings = <&mo 7>;
+            key-positions = <54 53>;
+            timeout-ms = <100>;
+        };
+
+        code_edit {
+            bindings = <&mo 8>;
+            key-positions = <56 55>;
+            timeout-ms = <100>;
+        };
     };
 
     keymap {
@@ -424,6 +436,26 @@
 &trans     &kp EXCL  &kp AT     &kp HASH  &kp DLLR  &kp PRCNT                    &kp PLUS        &kp RIGHT_PARENTHESIS  &kp LEFT_PARENTHESIS  &kp EQUAL       &kp SLASH  &kp PIPE
 &trans     &none     &kp MINUS  &kp PLUS  &none     &none      &trans    &trans  &kp MINUS       &kp RBKT               &kp LBKT              &kp COLON       &kp BSLH   &trans
                      &trans     &trans    &trans    &trans     &trans    &trans  &trans          &kp LC(LG(SPACE))      &trans                &trans
+            >;
+        };
+
+        docs {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        code_edit {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
