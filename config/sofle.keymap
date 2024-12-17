@@ -241,20 +241,6 @@
     };
 
     macros {
-        up_5: up_5 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp UP_ARROW &kp UP_ARROW &kp UP_ARROW &kp UP_ARROW &kp UP_ARROW>;
-            label = "UP_5";
-        };
-
-        down_5: down_5 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp DOWN &kp DOWN_ARROW &kp DOWN &kp DOWN &kp DOWN>;
-            label = "DOWN_5";
-        };
-
         arrow: arrow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
