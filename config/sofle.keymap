@@ -329,6 +329,13 @@
             bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp LG(X)>;
             label = "TRIPLE_BACKTICK_WRAP_MACRO";
         };
+
+        docs_reset_format_macro: docs_reset_format_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none>;
+            label = "DOCS_RESET_FORMAT_MACRO";
+        };
     };
 
     combos {
@@ -434,11 +441,11 @@
 
         docs {
             bindings = <
-&trans  &trans  &trans  &trans  &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &paste_link_macro  &insert_bookmark_macro  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans             &trans                  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans         &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans         &kp LG(BACKSLASH)  &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans         &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp LG(LA(M))  &paste_link_macro  &insert_bookmark_macro  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &kp LG(ENTER)
+                &trans  &trans         &trans             &trans                  &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
