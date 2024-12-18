@@ -381,11 +381,11 @@
         symbols_2 {
             display-name = "symbols_2";
             bindings = <
-&trans  &kp LS(EXCL)   &kp LS(LPAR)  &kp LS(RPAR)   &kp SEMI           &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LS(LBRC)   &kp SQT       &kp LS(DQT)    &kp LS(RBRC)       &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LS(CARET)  &kp EQUAL     &kp LS(UNDER)  &kp LS(DLLR)       &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LBKT       &kp LS(PIPE)  &kp MINUS      &kp RIGHT_BRACKET  &kp SLASH      &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                       &trans        &kp PLUS       &trans             &trans         &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(EXCL)   &kp LS(LPAR)      &kp LS(RPAR)       &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(LBRC)   &kp SQT           &kp LS(DQT)        &kp LS(RBRC)  &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(CARET)  &kp EQUAL         &kp LS(UNDER)      &kp LS(DLLR)  &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LT         &kp LS(PIPE)      &kp MINUS          &kp GT        &kp SLASH      &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                       &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PLUS      &trans         &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
