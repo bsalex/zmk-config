@@ -336,6 +336,13 @@
             bindings = <&none>;
             label = "DOCS_RESET_FORMAT_MACRO";
         };
+
+        docs_wrap_text_macro: docs_wrap_text_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(O)) &kp W &kp W>;
+            label = "DOCS_WRAP_TEXT_MACRO";
+        };
     };
 
     combos {
@@ -441,11 +448,11 @@
 
         docs {
             bindings = <
-&trans  &trans  &trans  &trans         &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans         &kp LG(BACKSLASH)  &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans         &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &kp LG(LA(M))  &paste_link_macro  &insert_bookmark_macro  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &kp LG(ENTER)
-                &trans  &trans         &trans             &trans                  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans         &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &docs_wrap_text_macro  &trans         &kp LG(BACKSLASH)  &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans         &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &kp LG(LA(M))  &paste_link_macro  &insert_bookmark_macro  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &kp LG(ENTER)
+                &trans                 &trans         &trans             &trans                  &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
