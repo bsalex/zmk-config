@@ -322,6 +322,13 @@
 
             label = "INSERT_BOOKMARK";
         };
+
+        triple_backtick_wrap_macro: triple_backtick_wrap_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp LG(X)>;
+            label = "TRIPLE_BACKTICK_WRAP_MACRO";
+        };
     };
 
     combos {
