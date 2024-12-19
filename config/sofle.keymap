@@ -184,7 +184,11 @@
             compatible = "zmk,behavior-tap-dance";
             label = "ESC_TAPDANCE";
             #binding-cells = <0>;
-            bindings = <&ctrl_esc>, <&backtick_wrap>, <&triple_backtick>;
+            bindings =
+                <&ctrl_esc>,
+                <&backtick_wrap>,
+                <&triple_backtick>,
+                <&triple_backtick_wrap_macro>;
 
             tapping-term-ms = <300>;
         };
@@ -326,7 +330,7 @@
         triple_backtick_wrap_macro: triple_backtick_wrap_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp LG(X)>;
+            bindings = <&kp LG(X) &kp GRAVE &kp GRAVE &kp GRAVE &kp LS(ENTER) &kp LG(V) &kp LS(ENTER) &kp GRAVE &kp GRAVE &kp GRAVE>;
             label = "TRIPLE_BACKTICK_WRAP_MACRO";
         };
 
