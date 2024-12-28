@@ -180,7 +180,7 @@
         shift_esc: shift_esc {
             compatible = "zmk,behavior-mod-morph";
             label = "SHIFT_ESC";
-            bindings = <&kp ESCAPE>, <&kp TILDE>;
+            bindings = <&esc_tapdance>, <&kp TILDE>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
@@ -191,7 +191,7 @@
             label = "ESC_TAPDANCE";
             #binding-cells = <0>;
             bindings =
-                <&ctrl_esc>,
+                <&kp ESCAPE>,
                 <&backtick_wrap>,
                 <&triple_backtick>,
                 <&triple_backtick_wrap_macro>;
