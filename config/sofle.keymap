@@ -248,6 +248,17 @@
             flavor = "tap-preferred";
             tapping-term-ms = <300>;
         };
+
+        delayed_tap_once_on_hold: delayed_tap_once_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "DELAYED_TAP_ONCE_ON_HOLD";
+            bindings = <&key_once_macro>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            flavor = "tap-preferred";
+            require-prior-idle-ms = <200>;
+        };
     };
 
     macros {
