@@ -394,11 +394,11 @@
         linux {
             display-name = "linux";
             bindings = <
-&trans   &trans  &trans     &trans    &trans    &trans                    &trans  &trans            &trans              &trans   &trans    &trans
-&trans   &trans  &trans     &trans    &trans    &trans                    &trans  &trans            &trans              &trans   &trans    &trans
-&trans   &trans  &trans     &trans    &trans    &trans                    &trans  &trans            &trans              &trans   &trans    &trans
-&trans   &trans  &trans     &trans    &trans    &trans   &none     &none   &trans   &trans  &trans     &trans    &trans    &trans
-                     &trans  &kp LGUI  &kp LALT  &trans  &trans    &trans  &trans  &trans  &trans &trans
+&trans  &trans  &trans  &trans    &trans    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans    &trans    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans    &trans    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans    &trans    &trans  &none     &none   &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &kp LGUI  &kp LALT  &trans  &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -500,7 +500,7 @@
         compatible = "zmk,conditional-layers";
 
         to_layers_layer {
-            if-layers = <3 4>;
+            if-layers = <6 5>;
             then-layer = <10>;
         };
     };
