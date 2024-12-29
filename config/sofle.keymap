@@ -353,6 +353,12 @@
             bindings = <&kp LC(LA(O)) &kp W &kp W>;
             label = "DOCS_WRAP_TEXT_MACRO";
         };
+
+        key_once_macro: key_once_macro {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+        };
     };
 
     combos {
