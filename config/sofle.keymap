@@ -484,11 +484,11 @@
 
         fn_and_numbers {
             bindings = <
-&trans  &kp F1  &kp F2  &kp F3  &kp F4   &kp F5                     &trans  &trans        &kp FSLH   &kp ASTERISK  &kp BSPC   &trans
-&trans  &kp F6  &kp F7  &kp F8  &kp F9   &kp F10                    &trans  &kp N7        &kp N8     &kp N9        &kp PLUS   &trans
-&trans  &trans  &trans  &trans  &kp F11  &kp F12                    &trans  &kp N4        &kp N5     &kp N6        &kp MINUS  &trans
-&trans  &trans  &trans  &trans  &trans   &trans   &trans    &trans  &trans  &kp NUMBER_1  &kp N2     &kp NUMBER_3  &trans     &trans
-                &trans  &trans  &trans   &trans   &trans    &trans  &trans  &kp N0        &kp COMMA  &kp DOT
+&trans  &kp F1  &kp F2  &kp F3  &kp F4   &kp F5                     &trans  &trans        &kp FSLH      &kp ASTERISK  &kp BSPC   &trans
+&trans  &kp F6  &kp F7  &kp F8  &kp F9   &kp F10                    &trans  &kp N7        &kp N8        &kp N9        &kp PLUS   &trans
+&trans  &trans  &trans  &trans  &kp F11  &kp F12                    &trans  &kp N4        &kp N5        &kp N6        &kp MINUS  &trans
+&trans  &trans  &trans  &trans  &trans   &trans   &trans    &trans  &trans  &kp NUMBER_1  &kp N2        &kp NUMBER_3  &kp COMMA  &trans
+                &trans  &trans  &trans   &trans   &trans    &trans  &trans  &kp N0        &kp NUMBER_0  &kp DOT
             >;
         };
 
