@@ -18,7 +18,6 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define OUTPUT_SOURCE_KEYCODE_STATE_CHANGE 3
-
 #define MAC_BASE_LAYER 0
 #define LINUX_LAYER 1
 #define SYMBOLS_2_LAYER 2
@@ -272,11 +271,13 @@
         };
 
         lra0_bump: lra0_bump {
-            compatible = "zmk,output-behavior-generic"; 
+            compatible = "zmk,output-behavior-generic";
             #binding-cells = <0>;
             device = <&lra0>;
+
             /* force will be convrt to waveformm effect from DRV2605 library */
             /* NOTE: <7> is Soft Bump at 100% */
+
             force = <6>;
         };
 
@@ -285,12 +286,15 @@
             layers = < 0 1 >;
             sources = < OUTPUT_SOURCE_KEYCODE_STATE_CHANGE >;
             #binding-cells = <0>;
+
             /* set keycode filter here */
+
             position = < 0x73 >;
             bindings = < &lra0_bump >;
-            
+
             /* enable to catch all state change that include key press and release */
             /* ensure to stop on-going LRA effect immediately on key released */
+
             all-state;
         };
 
@@ -370,7 +374,7 @@
         paste_once: paste_plain {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(V)>, <&kp F24>;
+            bindings = <&kp LG(V) &kp F24>;
             label = "PASTE_PLAIN";
         };
 
@@ -384,7 +388,7 @@
         copy_once: copy_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(C)>, <&kp F24>;
+            bindings = <&kp LG(C) &kp F24>;
             label = "COPY_ONCE";
         };
 
@@ -405,21 +409,21 @@
         undo_once: undo_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(Z)>, <&kp F24>;
+            bindings = <&kp LG(Z) &kp F24>;
             label = "UNDO_ONCE";
         };
 
         cut_once: cut_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(X)>, <&kp F24>;
+            bindings = <&kp LG(X) &kp F24>;
             label = "CUT_ONCE";
         };
 
         caps_lock_once: caps_lock_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp CAPSLOCK>, <&kp F24>;
+            bindings = <&kp CAPSLOCK &kp F24>;
             label = "CAPS_LOCK_ONCE";
         };
 
@@ -437,7 +441,7 @@
         insert_bookmark_macro: insert_bookmark {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LA(I))>, <&macro_wait_time 200>, <&kp B>, <&kp F24>;
+            bindings = <&kp LC(LA(I))>, <&macro_wait_time 200>, <&kp B &kp F24>;
 
             label = "INSERT_BOOKMARK";
         };
@@ -472,7 +476,7 @@
         key_once_haptic_macro: key_once_haptic_macro {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>, <&kp F24>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp F24>;
         };
     };
 
@@ -504,24 +508,24 @@
         mac {
             display-name = "mac";
             bindings = <
-&ctrl_esc                      &delayed_tap_once_on_hold F1 N1    &delayed_tap_once_on_hold F2 N2        &delayed_tap_once_on_hold F3 N3        &delayed_tap_once_on_hold F4 N4        &delayed_tap_once_on_hold F5 N5                                    &delayed_tap_once_on_hold F6 N6        &delayed_tap_once_on_hold F7 N7        &delayed_tap_once_on_hold F8 N8  &delayed_tap_once_on_hold F9 N9        &delayed_tap_once_on_hold F10 N0  &kp BACKSPACE
-&caps_lock_once_on_hold 0 TAB  &delayed_tap_hold_one LG(LC(Q)) Q  &delayed_tap_hold_one LS(LA(W)) W  &delayed_tap_hold_one LA(LS(E)) E  &delayed_tap_hold_one LA(LS(R)) R  &delayed_tap_hold_one LG(LC(T)) T                              &delayed_tap_hold_one LA(Y) Y      &kp U                              &kp I                        &delayed_tap_hold_one LA(LS(O)) O  &delayed_tap_once_on_hold F11 P   &delayed_tap_once_on_hold F12 BACKSLASH
-&kp LEFT_SHIFT                 &delayed_tap_hold_one LA(LS(A)) A  &delayed_tap_hold_one LS(LA(S)) S  &delayed_tap_hold_one LA(LS(D)) D  &delayed_tap_once_haptic_on_hold LG(F) F      &delayed_tap_hold_one LS(LA(G)) G                              &delayed_tap_hold_one LC(LG(H)) H  &kp J                              &kp K                        &kp L                              &kp SEMI                      &kp SQT
-&kp LCTRL                      &undo_once_on_hold 0 Z             &cut_once_on_hold 0 X              &copy_once_on_hold 0 C             &paste_on_hold_once 0 V            &delayed_tap_hold_one LA(LS(B)) B  &none          &kp LC(LA(LG(F13)))        &kp N                              &delayed_tap_hold_one LS(LA(M)) M  &kp COMMA                    &dot_arrow 0 DOT                   &kp FSLH                      &enter_shift_enter 0 ENTER
-                                                                  &kp LCTRL                          &kp LALT                           &kp LEFT_GUI                       &lt 2 SPACE                        &lt 6 SPACE    &lt 5 SPACE  &lt 3 SPACE                        &mo 9                              &only_hold LA(Y) 0           &mo 4
+&ctrl_esc                      &delayed_tap_once_on_hold F1 N1    &delayed_tap_once_on_hold F2 N2    &delayed_tap_once_on_hold F3 N3    &delayed_tap_once_on_hold F4 N4           &delayed_tap_once_on_hold F5 N5                                        &delayed_tap_once_on_hold F6 N6    &delayed_tap_once_on_hold F7 N7    &delayed_tap_once_on_hold F8 N8  &delayed_tap_once_on_hold F9 N9    &delayed_tap_once_on_hold F10 N0  &kp BACKSPACE
+&caps_lock_once_on_hold 0 TAB  &delayed_tap_hold_one LG(LC(Q)) Q  &delayed_tap_hold_one LS(LA(W)) W  &delayed_tap_hold_one LA(LS(E)) E  &delayed_tap_hold_one LA(LS(R)) R         &delayed_tap_hold_one LG(LC(T)) T                                      &delayed_tap_hold_one LA(Y) Y      &kp U                              &kp I                            &delayed_tap_hold_one LA(LS(O)) O  &delayed_tap_once_on_hold F11 P   &delayed_tap_once_on_hold F12 BACKSLASH
+&kp LEFT_SHIFT                 &delayed_tap_hold_one LA(LS(A)) A  &delayed_tap_hold_one LS(LA(S)) S  &delayed_tap_hold_one LA(LS(D)) D  &delayed_tap_once_haptic_on_hold LG(F) F  &delayed_tap_hold_one LS(LA(G)) G                                      &delayed_tap_hold_one LC(LG(H)) H  &kp J                              &kp K                            &kp L                              &kp SEMI                          &kp SQT
+&kp LCTRL                      &undo_once_on_hold 0 Z             &cut_once_on_hold 0 X              &copy_once_on_hold 0 C             &paste_on_hold_once 0 V                   &delayed_tap_hold_one LA(LS(B)) B  &none          &kp LC(LA(LG(F13)))  &kp N                              &delayed_tap_hold_one LS(LA(M)) M  &kp COMMA                        &dot_arrow 0 DOT                   &kp FSLH                          &enter_shift_enter 0 ENTER
+                                                                  &kp LCTRL                          &kp LALT                           &kp LEFT_GUI                              &lt 2 SPACE                        &lt 6 SPACE    &lt 5 SPACE          &lt 3 SPACE                        &mo 9                              &only_hold LA(Y) 0               &mo 4
             >;
 
-            sensor-bindings = <&inc_dec_kp UP DOWN>;
+            sensor-bindings = <&inc_dec_kp UP DOWN>, <&inc_dec_kp B C>;
         };
 
         linux {
             display-name = "linux";
             bindings = <
-&trans  &trans  &trans  &trans    &trans    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans    &trans    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans    &delayed_tap_once_haptic_on_hold LC(F) F    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &delayed_tap_once_haptic_on_hold LC(Z) Z  &delayed_tap_once_haptic_on_hold LC(X) X  &delayed_tap_once_haptic_on_hold LC(C) C    &delayed_tap_once_haptic_on_hold LC(V) V    &trans  &none     &none   &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &kp LGUI  &kp LALT  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans                                    &trans                                    &trans                                    &delayed_tap_once_haptic_on_hold LC(F) F  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &delayed_tap_once_haptic_on_hold LC(Z) Z  &delayed_tap_once_haptic_on_hold LC(X) X  &delayed_tap_once_haptic_on_hold LC(C) C  &delayed_tap_once_haptic_on_hold LC(V) V  &trans  &none     &none   &trans  &trans  &trans  &trans  &trans  &trans
+                                                  &trans                                    &kp LGUI                                  &kp LALT                                  &trans  &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp UP DOWN>;
@@ -541,7 +545,7 @@
         navigation {
             display-name = "navigation";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP     &trans        &kp LA(UP)    &trans         &trans   &kp LA(BACKSPACE)
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP  &trans        &kp LA(UP)    &trans         &trans   &kp LA(BACKSPACE)
 &trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_DN  &kp LA(LEFT)  &kp UP        &kp LA(RIGHT)  &trans   &trans
 &trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &kp LEFT      &kp DOWN      &kp RIGHT      &kp END  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans        &kp LA(DOWN)  &trans         &trans   &kp LS(ENTER)
@@ -564,11 +568,11 @@
 
         code_nav {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans               &trans  &trans                                         &trans  &trans
+&trans  &trans  &trans  &trans               &trans               &trans                                 &trans  &trans               &trans  &trans                                         &trans  &trans
 &trans  &trans  &trans  &kp LC(LA(LS(F13)))  &kp LC(LA(LS(F14)))  &kp LC(LA(LS(F15)))                    &trans  &mt LA(LS(U)) LA(U)  &trans  &kp LG(LC(O))                                  &trans  &trans
 &trans  &trans  &trans  &kp LC(LA(LS(F16)))  &kp LC(LA(LS(F17)))  &kp LC(LA(LS(F18)))                    &trans  &kp LC(LG(LEFT))     &trans  &delayed_tap_hold_one LC(LG(L)) LC(LG(RIGHT))  &trans  &trans
 &trans  &trans  &trans  &kp LC(LA(LS(F19)))  &kp LC(LA(LS(F20)))  &kp LC(LA(LS(F21)))  &trans    &trans  &trans  &trans               &trans  &trans                                         &trans  &kp LC(ENTER)
-                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans               &trans  &trans
+                &trans  &trans               &trans               &trans               &trans    &trans  &trans  &trans               &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LG(Z) LG(LS(Z))>;
@@ -576,11 +580,11 @@
 
         docs {
             bindings = <
-&trans  &kp LG(LA(N1))  &kp LG(LA(N2))                 &kp LG(LA(N3))         &kp LG(LA(N4))             &trans                                    &trans  &trans  &trans  &trans  &kp LG(LA(N0))  &trans
-&trans  &trans  &docs_wrap_text_macro  &kp LG(LC(SPACE))         &kp LG(BACKSLASH)  &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans                 &trans         &trans             &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans                 &kp LG(LA(M))  &paste_link_macro  &insert_bookmark_macro  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &kp LG(ENTER)
-                &trans                 &trans         &trans             &trans                  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &kp LG(LA(N1))  &kp LG(LA(N2))         &kp LG(LA(N3))     &kp LG(LA(N4))     &trans                                    &trans  &trans  &trans  &trans  &kp LG(LA(N0))  &trans
+&trans  &trans          &docs_wrap_text_macro  &kp LG(LC(SPACE))  &kp LG(BACKSLASH)  &trans                                    &trans  &trans  &trans  &trans  &trans          &trans
+&trans  &trans          &trans                 &trans             &trans             &trans                                    &trans  &trans  &trans  &trans  &trans          &trans
+&trans  &trans          &trans                 &kp LG(LA(M))      &paste_link_macro  &insert_bookmark_macro  &trans    &trans  &trans  &trans  &trans  &trans  &trans          &kp LG(ENTER)
+                        &trans                 &trans             &trans             &trans                  &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LG(Z) LG(LS(Z))>;
@@ -608,31 +612,31 @@
 
         pointer {
             bindings = <
-&trans  &trans  &trans     &trans     &trans     &trans                    &kp PAGE_UP     &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans           &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans                    &msc SCRL_UP    &mkp LCLK       &mouse_move_up     &trans           &trans  &trans
-&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans                    &msc SCRL_DOWN  &mouse_move_left  &mouse_move_down   &mouse_move_right  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans  &trans    &trans  &kp PAGE_DOWN   &trans          &trans           &trans           &trans  &trans
-                &trans     &trans     &trans     &trans  &trans    &trans  &trans          &trans          &trans           &trans
+&trans  &trans  &trans     &trans     &trans     &trans                    &kp PAGE_UP     &msc SCRL_LEFT    &msc SCRL_RIGHT   &trans             &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans                    &msc SCRL_UP    &mkp LCLK         &mouse_move_up    &trans             &trans  &trans
+&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans                    &msc SCRL_DOWN  &mouse_move_left  &mouse_move_down  &mouse_move_right  &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans  &trans    &trans  &kp PAGE_DOWN   &trans            &trans            &trans             &trans  &trans
+                &trans     &trans     &trans     &trans  &trans    &trans  &trans          &trans            &trans            &trans
             >;
         };
 
         zoom {
             bindings = <
-&none  &none  &none  &none  &none  &none                  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none                  &none  &kp LG(LA(N5))  &none  &none  &kp LG(LA(N9))  &none
-&none  &none  &none  &none  &none  &none                  &kp LA(Y)  &none  &none  &kp LG(LA(N6))  &none  &none
-&none  &none  &none  &none  &kp LS(LG(V))  &none  &trans    &trans  &none  &kp LS(LG(A))  &none  &none  &none  &none
-              &none  &none  &none  &trans  &trans    &trans  &trans  &kp SPACE  &none  &none
+&none  &none  &none  &none  &none          &none                     &none      &none           &none  &none           &none           &none
+&none  &none  &none  &none  &none          &none                     &none      &kp LG(LA(N5))  &none  &none           &kp LG(LA(N9))  &none
+&none  &none  &none  &none  &none          &none                     &kp LA(Y)  &none           &none  &kp LG(LA(N6))  &none           &none
+&none  &none  &none  &none  &kp LS(LG(V))  &none   &trans    &trans  &none      &kp LS(LG(A))   &none  &none           &none           &none
+              &none  &none  &none          &trans  &trans    &trans  &trans     &kp SPACE       &none  &none
             >;
         };
 
         layers {
             bindings = <
-&to 0  &to 1  &to 2  &to 3  &to 4  &to 5                  &to 6  &to 7  &to 8  &to 9  &none  &none
-&none  &none  &none  &none  &none  &none                  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &to 8  &none                  &none  &none  &none  &none  &none  &none
-&none  &to 10  &none  &none  &none  &none  &trans    &trans  &to 8  &none  &none  &none  &none  &none
-              &none  &none  &none  &trans  &trans    &trans  &trans  &none  &none  &none
+&to 0  &to 1   &to 2  &to 3  &to 4  &to 5                     &to 6   &to 7  &to 8  &to 9  &none  &none
+&none  &none   &none  &none  &none  &none                     &none   &none  &none  &none  &none  &none
+&none  &none   &none  &none  &to 8  &none                     &none   &none  &none  &none  &none  &none
+&none  &to 10  &none  &none  &none  &none   &trans    &trans  &to 8   &none  &none  &none  &none  &none
+               &none  &none  &none  &trans  &trans    &trans  &trans  &none  &none  &none
             >;
         };
     };
