@@ -558,11 +558,11 @@
         symbols_2 {
             display-name = "symbols_2";
             bindings = <
-&trans  &kp LS(EXCL)   &mt parenthesis_pair LPAR          &kp RPAR       &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &mt curly_pair LBRC       &kp SQT           &mt double_quote_pair DQT        &kp RBRC      &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(EXCL)   &mt &parenthesis_pair LPAR          &kp RPAR       &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &mt &curly_pair LBRC       &kp SQT           &mt &double_quote_pair DQT        &kp RBRC      &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LS(CARET)  &kp EQUAL         &kp LS(UNDER)      &kp LS(DLLR)  &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LT         &kp LS(PIPE)      &kp MINUS          &kp GT        &kp SLASH      &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                       &mt brackets_pair LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PLUS      &trans         &trans    &trans  &trans  &trans  &trans  &trans
+                       &mt &brackets_pair LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PLUS      &trans         &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
