@@ -22,7 +22,7 @@
 };
 
 &right_encoder {
-    status = "okay";
+    status = "ok";
     steps = <60>;
 };
 

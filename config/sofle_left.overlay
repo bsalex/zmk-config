@@ -17,9 +17,6 @@
         ;
 };
 
-&left_encoder {
-    status = "okay";
-};
 
 / {
     /* assign feedback device from actual DRV2605 i2c device */
