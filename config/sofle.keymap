@@ -26,6 +26,16 @@
 #define CODE_NAVIGATION_LAYER 5
 #define SYMBOLS_LAYER 6
 
+&left_encoder {
+    status = "ok";
+    steps = <60>;
+};
+
+&right_encoder {
+    status = "ok";
+    steps = <60>;
+};
+
 / {
     behaviors {
         double_space_to_enter: double_space_to_enter {
