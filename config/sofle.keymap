@@ -35,6 +35,10 @@
     steps = <60>;
 };
 
+&sensors {
+    triggers-per-rotation = <30>;
+};
+
 / {
     behaviors {
         double_space_to_enter: double_space_to_enter {
