@@ -27,8 +27,7 @@
 #define SYMBOLS_LAYER 6
 
 &left_encoder {
-    status = "ok";
-    steps = <60>;
+    status = "disabled";
 };
 
 &right_encoder {
