@@ -265,7 +265,7 @@
             bindings = <&key_once_haptic_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <300>;
+            tapping-term-ms = <250>;
             flavor = "tap-preferred";
             require-prior-idle-ms = <200>;
         };
@@ -278,7 +278,7 @@
             /* force will be convrt to waveformm effect from DRV2605 library */
             /* NOTE: <7> is Soft Bump at 100% */
 
-            force = <6>;
+            force = <25>;
         };
 
         lra0_bump_listener: lra0_bump_listener {
@@ -478,6 +478,30 @@
             #binding-cells = <1>;
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp F24>;
         };
+
+        parenthesis_pair: parenthesis_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT &kp F24>;
+        };
+
+        blackets_pair: brackets_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &kp F24>;
+        };
+
+        curly_pair: curly_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT &kp F24>;
+        };
+
+        double_quote_pair: double_quote_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp DQT &kp LEFT &kp F24>;
+        };
     };
 
     combos {
@@ -534,11 +558,11 @@
         symbols_2 {
             display-name = "symbols_2";
             bindings = <
-&trans  &kp LS(EXCL)   &kp LS(LPAR)      &kp LS(RPAR)       &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LS(LBRC)   &kp SQT           &kp LS(DQT)        &kp LS(RBRC)  &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(EXCL)   &mt parenthesis_pair LPAR          &kp RPAR       &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &mt curly_pair LBRC       &kp SQT           &mt double_quote_pair DQT        &kp RBRC      &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LS(CARET)  &kp EQUAL         &kp LS(UNDER)      &kp LS(DLLR)  &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LT         &kp LS(PIPE)      &kp MINUS          &kp GT        &kp SLASH      &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                       &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PLUS      &trans         &trans    &trans  &trans  &trans  &trans  &trans
+                       &mt brackets_pair LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PLUS      &trans         &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
