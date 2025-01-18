@@ -485,7 +485,7 @@
             bindings = <&kp LPAR &kp RPAR &kp LEFT &kp F24>;
         };
 
-        blackets_pair: brackets_pair {
+        brackets_pair: brackets_pair {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &kp F24>;
