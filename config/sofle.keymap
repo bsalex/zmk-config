@@ -267,7 +267,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
-            require-prior-idle-ms = <200>;
+            require-prior-idle-ms = <100>;
         };
 
         lra0_bump: lra0_bump {
@@ -360,6 +360,38 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL)>;
+        };
+
+        parenthesis_pair_on_hold: parenthesis_pair_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&parenthesis_pair_macro>, <&kp LPAR>;
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        brackets_pair_on_hold: brackets_pair_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&brackets_pair_macro>, <&kp LBRC>;
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        curly_pair_on_hold: curly_pair_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&curly_pair_macro>, <&kp LS(LBRC)>;
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        double_quote_pair_on_hold: double_quote_pair_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&double_quote_pair_macro>, <&kp DQT>;
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
         };
     };
 
@@ -479,25 +511,25 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp F24>;
         };
 
-        parenthesis_pair: parenthesis_pair {
+        parenthesis_pair_macro: parenthesis_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LPAR &kp RPAR &kp LEFT &kp F24>;
         };
 
-        brackets_pair: brackets_pair {
+        brackets_pair_macro: brackets_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &kp F24>;
         };
 
-        curly_pair: curly_pair {
+        curly_pair_macro: curly_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LBRC &kp RBRC &kp LEFT &kp F24>;
+            bindings = <&kp LS(LBRC) &kp (RBRC) &kp LEFT &kp F24>;
         };
 
-        double_quote_pair: double_quote_pair {
+        double_quote_pair_macro: double_quote_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DQT &kp LEFT &kp F24>;
@@ -539,7 +571,7 @@
                                                                   &kp LCTRL                          &kp LALT                           &kp LEFT_GUI                              &lt 2 SPACE                        &lt 6 SPACE    &lt 5 SPACE          &lt 3 SPACE                        &mo 9                              &only_hold LA(Y) 0               &mo 4
             >;
 
-            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp UP DOWN>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp DOWN UP>;
         };
 
         linux {
@@ -552,17 +584,17 @@
                                                   &trans                                    &kp LGUI                                  &kp LALT                                  &trans  &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp UP DOWN>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp DOWN UP>;
         };
 
         symbols_2 {
             display-name = "symbols_2";
             bindings = <
-&trans  &kp LS(EXCL)   &mt &parenthesis_pair LPAR          &kp RPAR       &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &mt &curly_pair LBRC       &kp SQT           &mt &double_quote_pair DQT        &kp RBRC      &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LS(EXCL)   &parenthesis_pair_on_hold          &kp RPAR       &kp SEMI      &kp BSLH                         &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &curly_pair_on_hold       &kp SQT           &double_quote_pair_on_hold        &kp LS(RBRC)      &kp LS(QMARK)                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LS(CARET)  &kp EQUAL         &kp LS(UNDER)      &kp LS(DLLR)  &kp LS(AMPS)                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LT         &kp LS(PIPE)      &kp MINUS          &kp GT        &kp SLASH      &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                       &mt &brackets_pair LEFT_BRACKET  &kp RIGHT_BRACKET  &kp PLUS      &trans         &trans    &trans  &trans  &trans  &trans  &trans
+                       &brackets_pair_on_hold  &kp RIGHT_BRACKET  &kp PLUS      &trans         &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -576,7 +608,7 @@
                 &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LEFT RIGHT>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp RIGHT LEFT>;
         };
 
         connectivity {
@@ -599,7 +631,7 @@
                 &trans  &trans               &trans               &trans               &trans    &trans  &trans  &trans               &trans  &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LC(LG(LEFT)) LC(LG(RIGHT))>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LC(LG(RIGHT)) LC(LG(LEFT))>;
         };
 
         docs {
@@ -611,7 +643,7 @@
                         &trans                 &trans             &trans             &trans                  &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LG(Z) LG(LS(Z))>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LG(LS(Z)) LG(Z)>;
         };
 
         code_edit {
