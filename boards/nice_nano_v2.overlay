@@ -37,6 +37,15 @@
 };
 
 / {
+    lra0: output_haptic_fb_0 {
+        compatible = "zmk,output-haptic-feedback";
+        #binding-cells = <0>;
+        /* only one driver type is supported now */
+        driver = "drv2605";
+        /* labled i2c device with [zmk-drv2605-driver] */
+        device = <&drv2605_0>;
+    };
+
     chosen {
         
     };
