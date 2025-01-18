@@ -30,14 +30,14 @@
     behaviors {
         double_space_to_enter: double_space_to_enter {
             compatible = "zmk,behavior-tap-dance";
-            label = "DOUBLE_SPACE_TO_ENTER";
+            
             #binding-cells = <0>;
             bindings = <&lt 2 SPACE>, <&kp ENTER>;
         };
 
         f4_enter: f4_enter {
             compatible = "zmk,behavior-hold-tap";
-            label = "F4_ENTER";
+            
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -46,7 +46,7 @@
 
         gresc_ctrl: gresc_ctrl {
             compatible = "zmk,behavior-mod-morph";
-            label = "GRESC_CTRL";
+            
             bindings = <&kp ESCAPE>, <&kp GRAVE>;
 
             #binding-cells = <0>;
@@ -55,7 +55,7 @@
 
         dot_arrow: dot_arrow {
             compatible = "zmk,behavior-hold-tap";
-            label = "DOT_ARROW";
+            
             bindings = <&arrow>, <&kp>;
 
             #binding-cells = <2>;
@@ -65,7 +65,7 @@
 
         delayed_tap_hold_one: delayed_tap_hold_one {
             compatible = "zmk,behavior-hold-tap";
-            label = "DELAYED_TAP_HOLD_ONE";
+            
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -76,7 +76,7 @@
 
         hold_on_tab_mt: hold_on_tab_mt {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_ON_TAB_MT";
+            
             bindings = <&mt>, <&kp>;
 
             #binding-cells = <2>;
@@ -86,14 +86,14 @@
 
         shift_caps: shift_caps {
             compatible = "zmk,behavior-tap-dance";
-            label = "SHIFT_CAPS";
+            
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPSLOCK>;
         };
 
         only_hold: only_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "ONLY_HOLD";
+            
             bindings = <&kp>, <&none>;
 
             #binding-cells = <2>;
@@ -103,7 +103,7 @@
 
         only_tap_none_hold: only_tap_none_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "ONLY_TAP_NONE_HOLD";
+            
             bindings = <&none>, <&kp>;
 
             #binding-cells = <2>;
@@ -112,7 +112,7 @@
 
         paste_on_hold_once: paste_on_hold_once {
             compatible = "zmk,behavior-hold-tap";
-            label = "PASTE_ON_HOLD_ONCE";
+            
             bindings = <&paste_once>, <&kp>;
 
             #binding-cells = <2>;
@@ -122,7 +122,7 @@
 
         monosnap_image_copy: monosnap_image_copy {
             compatible = "zmk,behavior-mod-morph";
-            label = "MONOSNAP_IMAGE_COPY";
+            
             bindings = <&kp C>, <&kp LA(LG(C))>;
 
             #binding-cells = <0>;
@@ -131,7 +131,7 @@
 
         copy_stuff: copy_stuff {
             compatible = "zmk,behavior-hold-tap";
-            label = "COPY_STUFF";
+            
             bindings = <&kp>, <&monosnap_image_copy>;
 
             #binding-cells = <2>;
@@ -141,7 +141,7 @@
 
         enter_shift_enter: enter_shift_enter {
             compatible = "zmk,behavior-hold-tap";
-            label = "ENTER_SHIFT_ENTER";
+            
             bindings = <&single_shift_enter>, <&kp>;
 
             #binding-cells = <2>;
@@ -151,7 +151,7 @@
 
         to_layer_on_hold: to_layer_on_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "TO_LAYER_ON_HOLD";
+            
             bindings = <&to>, <&kp>;
 
             #binding-cells = <2>;
@@ -161,7 +161,7 @@
 
         copy_once_on_hold: copy_once_on_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "COPY_ONCE_ON_HOLD";
+            
             bindings = <&copy_once>, <&kp>;
 
             #binding-cells = <2>;
@@ -171,7 +171,7 @@
 
         ctrl_esc: ctrl_esc {
             compatible = "zmk,behavior-mod-morph";
-            label = "CTRL_ESC";
+            
             bindings = <&shift_esc>, <&kp LC(GRAVE)>;
 
             #binding-cells = <0>;
@@ -180,7 +180,7 @@
 
         shift_esc: shift_esc {
             compatible = "zmk,behavior-mod-morph";
-            label = "SHIFT_ESC";
+            
             bindings = <&esc_tapdance>, <&kp TILDE>;
 
             #binding-cells = <0>;
@@ -189,7 +189,7 @@
 
         esc_tapdance: esc_tapdance {
             compatible = "zmk,behavior-tap-dance";
-            label = "ESC_TAPDANCE";
+            
             #binding-cells = <0>;
             bindings =
                 <&kp ESCAPE>,
@@ -202,7 +202,7 @@
 
         undo_once_on_hold: undo_once_on_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "UNDO_ONCE_ON_HOLD";
+            
             bindings = <&undo_once>, <&kp>;
 
             #binding-cells = <2>;
@@ -212,7 +212,7 @@
 
         cut_once_on_hold: cut_once_on_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "CUT_ONCE_ON_HOLD";
+            
             bindings = <&cut_once>, <&kp>;
 
             #binding-cells = <2>;
@@ -222,7 +222,7 @@
 
         caps_lock_once_on_hold: caps_lock_once_on_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "CAPS_LOCK_ONCE_ON_HOLD";
+            
             bindings = <&caps_lock_once>, <&kp>;
 
             #binding-cells = <2>;
@@ -232,7 +232,7 @@
 
         paste_link_on_hold_once: paste_link_on_hold_once {
             compatible = "zmk,behavior-hold-tap";
-            label = "PASTE_LINK_ON_HOLD_ONCE";
+            
             bindings = <&paste_link_macro>, <&kp>;
 
             #binding-cells = <2>;
@@ -242,7 +242,7 @@
 
         insert_bookmark_on_hold_once: insert_bookmark_on_hold_once {
             compatible = "zmk,behavior-hold-tap";
-            label = "INSERT_BOOKMARK_ON_HOLD_ONCE";
+            
             bindings = <&insert_bookmark_macro>, <&kp>;
 
             #binding-cells = <2>;
@@ -400,63 +400,54 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp MINUS &kp GT &kp LC(SPACE)>;
-            label = "ARROW";
         };
 
         paste_once: paste_plain {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(V) &kp F24>;
-            label = "PASTE_PLAIN";
         };
 
         single_shift_enter: single_shift_enter {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(ENTER)>;
-            label = "SINGLE_SHIFT_ENTER";
         };
 
         copy_once: copy_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(C) &kp F24>;
-            label = "COPY_ONCE";
         };
 
         triple_backtick: triple_backtick {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp GRAVE &kp GRAVE &kp GRAVE>;
-            label = "triple_backtick";
         };
 
         backtick_wrap: backtick_wrap {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(X) &kp GRAVE &kp GRAVE &kp LEFT_ARROW &kp LG(V)>;
-            label = "BACKTICK_WRAP";
         };
 
         undo_once: undo_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(Z) &kp F24>;
-            label = "UNDO_ONCE";
         };
 
         cut_once: cut_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(X) &kp F24>;
-            label = "CUT_ONCE";
         };
 
         caps_lock_once: caps_lock_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp CAPSLOCK &kp F24>;
-            label = "CAPS_LOCK_ONCE";
         };
 
         paste_link_macro: paste_link_macro {
@@ -466,37 +457,30 @@
                 <&kp LG(K)>,
                 <&macro_wait_time 200>,
                 <&kp LG(V) &kp ENTER>;
-
-            label = "PASTE_LINK_MACRO";
         };
 
         insert_bookmark_macro: insert_bookmark {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(LA(I))>, <&macro_wait_time 200>, <&kp B &kp F24>;
-
-            label = "INSERT_BOOKMARK";
         };
 
         triple_backtick_wrap_macro: triple_backtick_wrap_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(X) &kp GRAVE &kp GRAVE &kp GRAVE &kp LS(ENTER) &kp LG(V) &kp LS(ENTER) &kp GRAVE &kp GRAVE &kp GRAVE>;
-            label = "TRIPLE_BACKTICK_WRAP_MACRO";
         };
 
         docs_reset_format_macro: docs_reset_format_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&none>;
-            label = "DOCS_RESET_FORMAT_MACRO";
         };
 
         docs_wrap_text_macro: docs_wrap_text_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(LA(O)) &kp W &kp W>;
-            label = "DOCS_WRAP_TEXT_MACRO";
         };
 
         key_once_macro: key_once_macro {
