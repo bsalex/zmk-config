@@ -515,7 +515,7 @@
                                                                   &kp LCTRL                          &kp LALT                           &kp LEFT_GUI                              &lt 2 SPACE                        &lt 6 SPACE    &lt 5 SPACE          &lt 3 SPACE                        &mo 9                              &only_hold LA(Y) 0               &mo 4
             >;
 
-            sensor-bindings = <&none>, <&inc_dec_kp UP DOWN>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp UP DOWN>;
         };
 
         linux {
@@ -528,7 +528,7 @@
                                                   &trans                                    &kp LGUI                                  &kp LALT                                  &trans  &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&none>, <&inc_dec_kp UP DOWN>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp UP DOWN>;
         };
 
         symbols_2 {
@@ -552,7 +552,7 @@
                 &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&none>, <&inc_dec_kp LEFT RIGHT>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LEFT RIGHT>;
         };
 
         connectivity {
@@ -575,7 +575,7 @@
                 &trans  &trans               &trans               &trans               &trans    &trans  &trans  &trans               &trans  &trans
             >;
 
-            sensor-bindings = <&none>, <&inc_dec_kp LG(Z) LG(LS(Z))>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LC(LG(LEFT)) LC(LG(RIGHT))>;
         };
 
         docs {
@@ -587,7 +587,7 @@
                         &trans                 &trans             &trans             &trans                  &trans    &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&none>, <&inc_dec_kp LG(Z) LG(LS(Z))>;
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LG(Z) LG(LS(Z))>;
         };
 
         code_edit {
