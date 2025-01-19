@@ -645,7 +645,7 @@
         pointer {
             bindings = <
 &trans  &trans  &trans     &trans     &trans     &trans                    &kp PAGE_UP     &msc SCRL_LEFT    &msc SCRL_RIGHT   &trans             &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans                    &msc SCRL_UP    &mkp LCLK         &mouse_move_up    &trans             &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans                    &msc SCRL_UP    &mkp LCLK         &mouse_move_up    &mkp RCLK          &trans  &trans
 &trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans                    &msc SCRL_DOWN  &mouse_move_left  &mouse_move_down  &mouse_move_right  &trans  &trans
 &trans  &trans  &trans     &trans     &trans     &trans  &trans    &trans  &kp PAGE_DOWN   &trans            &trans            &trans             &trans  &trans
                 &trans     &trans     &trans     &trans  &trans    &trans  &trans          &trans            &trans            &trans
