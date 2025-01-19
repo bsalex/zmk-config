@@ -273,7 +273,7 @@
 
         lra0_bump_listener: lra0_bump_listener {
             compatible = "zmk,output-behavior-listener";
-            layers = < 0 1 >;
+            layers = < 0 1 2 >;
             sources = < OUTPUT_SOURCE_KEYCODE_STATE_CHANGE >;
             #binding-cells = <0>;
 
