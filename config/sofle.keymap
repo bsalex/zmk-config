@@ -116,7 +116,7 @@
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <300>;
+            tapping-term-ms = <150>;
         };
 
         monosnap_image_copy: monosnap_image_copy {
@@ -160,7 +160,7 @@
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <300>;
+            tapping-term-ms = <150>;
         };
 
         ctrl_esc: ctrl_esc {
@@ -197,7 +197,7 @@
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <300>;
+            tapping-term-ms = <150>;
         };
 
         cut_once_on_hold: cut_once_on_hold {
@@ -206,7 +206,7 @@
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <300>;
+            tapping-term-ms = <150>;
         };
 
         caps_lock_once_on_hold: caps_lock_once_on_hold {
@@ -215,7 +215,7 @@
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <300>;
+            tapping-term-ms = <150>;
         };
 
         paste_link_on_hold_once: paste_link_on_hold_once {
@@ -241,9 +241,9 @@
             bindings = <&key_once_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <300>;
+            tapping-term-ms = <150>;
             flavor = "tap-preferred";
-            require-prior-idle-ms = <200>;
+            require-prior-idle-ms = <100>;
         };
 
         delayed_tap_once_haptic_on_hold: delayed_tap_once_haptic_on_hold {
@@ -380,7 +380,7 @@
             bindings = <&double_quote_pair_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <150>;
             flavor = "tap-preferred";
         };
     };
