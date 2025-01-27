@@ -398,6 +398,8 @@
             label = "CONTROL_TAPDANCE_TO_SUGGESTION";
             #binding-cells = <0>;
             bindings = <&kp LCTRL>, <&kp LC(SPACE)>;
+
+            tapping-term-ms = <250>;
         };
     };
 
@@ -586,11 +588,11 @@
         symbols_2 {
             display-name = "symbols_2";
             bindings = <
-&trans  &kp EXCL                    &parenthesis_pair_on_hold 0 LPAR       &kp RPAR                          &kp SEMI    &kp BSLH                        &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &curly_pair_on_hold 0 LBRC  &kp SQT                                &double_quote_pair_on_hold 0 DQT  &kp RBRC    &kp QUESTION                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &brackets_pair_on_hold 0 LEFT_BRACKET                 &kp EQUAL                              &kp LS(UNDER)                     &kp DOLLAR  &kp AMPS                        &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &angle_pair_on_hold 0 LT                      &kp PIPE                               &kp MINUS                         &kp GT      &kp SLASH     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                                    &brackets_pair_on_hold 0 LEFT_BRACKET  &kp RIGHT_BRACKET                 &kp PLUS    &trans        &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &kp EXCL                               &parenthesis_pair_on_hold 0 LPAR       &kp RPAR                          &kp SEMI    &kp BSLH                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &curly_pair_on_hold 0 LBRC             &kp SQT                                &double_quote_pair_on_hold 0 DQT  &kp RBRC    &kp QUESTION                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &brackets_pair_on_hold 0 LEFT_BRACKET  &kp EQUAL                              &kp LS(UNDER)                     &kp DOLLAR  &kp AMPS                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &angle_pair_on_hold 0 LT               &kp PIPE                               &kp MINUS                         &kp GT      &kp SLASH     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                               &brackets_pair_on_hold 0 LEFT_BRACKET  &kp RIGHT_BRACKET                 &kp PLUS    &trans        &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
 
