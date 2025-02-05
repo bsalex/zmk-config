@@ -308,7 +308,7 @@
 
         mouse_move_left: mouse_move_left {
             compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_X(-3000)>;
+            bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_X(-3000)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL)>;
