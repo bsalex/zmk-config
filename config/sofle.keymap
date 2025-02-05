@@ -252,7 +252,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
-            require-prior-idle-ms = <100>;
         };
 
         lra0_bump: lra0_bump {
