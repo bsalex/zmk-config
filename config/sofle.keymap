@@ -241,9 +241,8 @@
             bindings = <&key_once_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             flavor = "tap-preferred";
-            require-prior-idle-ms = <100>;
         };
 
         delayed_tap_once_haptic_on_hold: delayed_tap_once_haptic_on_hold {
