@@ -284,63 +284,31 @@
 
         mouse_move_up: mouse_move_up {
             compatible = "zmk,behavior-mod-morph";
-            bindings = <&mouse_move_up_slow>, <&mmv MOVE_Y(-3000)>;
+            bindings = <&mmv MOVE_UP>, <&mmv MOVE_Y(-3000)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
+            mods = <(MOD_LCTL)>;
         };
 
         mouse_move_right: mouse_move_right {
             compatible = "zmk,behavior-mod-morph";
-            bindings = <&mouse_move_right_slow>, <&mmv MOVE_X(3000)>;
+            bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(3000)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
+            mods = <(MOD_LCTL)>;
         };
 
         mouse_move_down: mouse_move_down {
             compatible = "zmk,behavior-mod-morph";
-            bindings = <&mouse_move_down_slow>, <&mmv MOVE_Y(3000)>;
+            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_Y(3000)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
+            mods = <(MOD_LCTL)>;
         };
 
         mouse_move_left: mouse_move_left {
             compatible = "zmk,behavior-mod-morph";
-            bindings = <&mouse_move_left_slow>, <&mmv MOVE_X(-3000)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        mouse_move_up_slow: mouse_move_up_slow {
-            compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_UP>, <&mmv MOVE_Y(-400)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        mouse_move_right_slow: mouse_move_right_slow {
-            compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(400)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        mouse_move_down_slow: mouse_move_down_slow {
-            compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_Y(400)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        mouse_move_left_slow: mouse_move_left_slow {
-            compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_X(-400)>;
+            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_X(-3000)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL)>;
@@ -351,7 +319,7 @@
             bindings = <&parenthesis_pair_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
 
@@ -360,7 +328,7 @@
             bindings = <&brackets_pair_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
 
@@ -369,7 +337,7 @@
             bindings = <&angle_pair_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
 
@@ -378,7 +346,7 @@
             bindings = <&curly_pair_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
 
@@ -387,7 +355,7 @@
             bindings = <&double_quote_pair_macro>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
 
