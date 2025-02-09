@@ -215,7 +215,7 @@
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
         };
 
         paste_link_on_hold_once: paste_link_on_hold_once {
