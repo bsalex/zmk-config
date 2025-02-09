@@ -534,6 +534,8 @@
 &control_tapdance_to_suggestion  &undo_once_on_hold 0 Z                    &cut_once_on_hold 0 X                     &copy_once_on_hold 0 C             &paste_on_hold_once 0 V                   &delayed_tap_hold_one LA(LS(B)) B  &none          &kp LC(LA(LG(F13)))  &kp N                                         &delayed_tap_hold_one LS(LA(M)) M  &kp COMMA                                            &dot_arrow 0 DOT                       &kp FSLH                          &kp ENTER
                                                                            &mo 8                                     &kp LALT                           &kp LEFT_GUI                              &lt 2 SPACE                        &lt 6 SPACE    &lt 5 SPACE          &lt 3 SPACE                                   &mo 9                              &delayed_tap_once_on_hold LA(ESCAPE) K_CONTEXT_MENU  &mo 4
             >;
+
+            sensor-bindings = <&inc_dec_kp A B>, <&inc_dec_kp DOWN UP>;
         };
 
         linux {
