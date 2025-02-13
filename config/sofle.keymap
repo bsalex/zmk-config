@@ -367,6 +367,16 @@
 
             tapping-term-ms = <250>;
         };
+
+        long_delayed_tap_once_on_hold: long_delayed_tap_once_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&key_once_macro>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
+            flavor = "tap-preferred";
+            label = "LONG_DELAYED_TAP_ONCE_ON_HOLD";
+        };
     };
 
     macros {
@@ -528,10 +538,10 @@
         mac {
             display-name = "mac";
             bindings = <
-&ctrl_esc                        &delayed_tap_once_on_hold F1 N1           &delayed_tap_once_on_hold F2 N2           &delayed_tap_once_on_hold F3 N3    &delayed_tap_once_on_hold F4 N4           &delayed_tap_once_on_hold F5 N5                                        &delayed_tap_once_on_hold F6 N6               &delayed_tap_once_on_hold F7 N7    &delayed_tap_once_on_hold F8 N8                      &delayed_tap_once_on_hold F9 N9        &delayed_tap_once_on_hold F10 N0  &kp BACKSPACE
-&caps_lock_once_on_hold 0 TAB    &delayed_tap_hold_one LG(LC(Q)) Q         &delayed_tap_hold_one LS(LA(W)) W         &delayed_tap_hold_one LA(LS(E)) E  &delayed_tap_hold_one LA(LS(R)) R         &delayed_tap_hold_one LG(LC(T)) T                                      &delayed_tap_hold_one LA(Y) Y                 &kp U                              &kp I                                                &delayed_tap_hold_one LA(LS(O)) O      &delayed_tap_once_on_hold F11 P   &delayed_tap_once_on_hold F12 LEFT_BRACKET
-&kp LEFT_SHIFT                   &delayed_tap_once_haptic_on_hold LG(A) A  &delayed_tap_once_haptic_on_hold LG(S) S  &delayed_tap_hold_one LA(LS(D)) D  &delayed_tap_once_haptic_on_hold LG(F) F  &delayed_tap_hold_one LS(LA(G)) G                                      &delayed_tap_once_haptic_on_hold LC(LG(H)) H  &kp J                              &kp K                                                &delayed_tap_once_on_hold LS(LA(S)) L  &kp SEMI                          &kp SQT
-&control_tapdance_to_suggestion  &undo_once_on_hold 0 Z                    &cut_once_on_hold 0 X                     &copy_once_on_hold 0 C             &paste_on_hold_once 0 V                   &delayed_tap_hold_one LA(LS(B)) B  &none          &kp LC(LA(LG(F13)))  &kp N                                         &delayed_tap_hold_one LS(LA(M)) M  &kp COMMA                                            &dot_arrow 0 DOT                       &kp FSLH                          &kp ENTER
+&ctrl_esc                        &delayed_tap_once_on_hold F1 N1           &delayed_tap_once_on_hold F2 N2           &delayed_tap_once_on_hold F3 N3    &delayed_tap_once_on_hold F4 N4           &delayed_tap_once_on_hold F5 N5                                        &delayed_tap_once_on_hold F6 N6               &delayed_tap_once_on_hold F7 N7    &delayed_tap_once_on_hold F8 N8                      &delayed_tap_once_on_hold F9 N9             &delayed_tap_once_on_hold F10 N0  &kp BACKSPACE
+&caps_lock_once_on_hold 0 TAB    &delayed_tap_hold_one LG(LC(Q)) Q         &delayed_tap_hold_one LS(LA(W)) W         &delayed_tap_hold_one LA(LS(E)) E  &delayed_tap_hold_one LA(LS(R)) R         &delayed_tap_hold_one LG(LC(T)) T                                      &delayed_tap_hold_one LA(Y) Y                 &kp U                              &kp I                                                &delayed_tap_hold_one LA(LS(O)) O           &delayed_tap_once_on_hold F11 P   &delayed_tap_once_on_hold F12 LEFT_BRACKET
+&kp LEFT_SHIFT                   &delayed_tap_once_haptic_on_hold LG(A) A  &delayed_tap_once_haptic_on_hold LG(S) S  &delayed_tap_hold_one LA(LS(D)) D  &delayed_tap_once_haptic_on_hold LG(F) F  &delayed_tap_hold_one LS(LA(G)) G                                      &delayed_tap_once_haptic_on_hold LC(LG(H)) H  &kp J                              &kp K                                                &long_delayed_tap_once_on_hold LS(LA(S)) L  &kp SEMI                          &kp SQT
+&control_tapdance_to_suggestion  &undo_once_on_hold 0 Z                    &cut_once_on_hold 0 X                     &copy_once_on_hold 0 C             &paste_on_hold_once 0 V                   &delayed_tap_hold_one LA(LS(B)) B  &none          &kp LC(LA(LG(F13)))  &kp N                                         &delayed_tap_hold_one LS(LA(M)) M  &kp COMMA                                            &dot_arrow 0 DOT                            &kp FSLH                          &kp ENTER
                                                                            &mo 8                                     &kp LALT                           &kp LEFT_GUI                              &lt 2 SPACE                        &lt 6 SPACE    &lt 5 SPACE          &lt 3 SPACE                                   &mo 9                              &delayed_tap_once_on_hold LA(ESCAPE) K_CONTEXT_MENU  &mo 4
             >;
 
