@@ -377,6 +377,16 @@
             flavor = "tap-preferred";
             label = "LONG_DELAYED_TAP_ONCE_ON_HOLD";
         };
+
+        fat_arrow_on_hold: fat_arrow_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&fat_arrow_macro>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            label = "FAT_ARROW_ON_HOLD";
+        };
     };
 
     macros {
@@ -508,6 +518,13 @@
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DQT &kp LEFT &kp F24>;
         };
+
+        fat_arrow_macro: fat_arrow_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp KP_EQUAL &kp GREATER_THAN &kp F24>;
+            label = "FAT_ARROW_MACRO";
+        };
     };
 
     combos {
@@ -566,7 +583,7 @@
             bindings = <
 &kp GRAVE  &kp EXCL                               &parenthesis_pair_on_hold 0 LPAR       &kp RPAR                          &kp BACKSLASH  &kp BSLH                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &curly_pair_on_hold 0 LBRC             &kp SQT                                &double_quote_pair_on_hold 0 DQT  &kp RBRC       &kp PLUS                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &brackets_pair_on_hold 0 LEFT_BRACKET  &kp EQUAL                              &kp LS(UNDER)                     &kp DOLLAR     &kp AMPS                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &brackets_pair_on_hold 0 LEFT_BRACKET  &fat_arrow_on_hold 0 EQUAL             &kp LS(UNDER)                     &kp DOLLAR     &kp AMPS                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &angle_pair_on_hold 0 LT               &kp PIPE                               &kp MINUS                         &kp GT         &kp SLASH  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                                   &brackets_pair_on_hold 0 LEFT_BRACKET  &kp RIGHT_BRACKET                 &kp PLUS       &trans     &trans    &trans  &trans  &trans  &trans  &trans
             >;
