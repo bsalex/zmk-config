@@ -32,7 +32,7 @@
         /* switch to standby mode after idling for 1000ms */
         standby-ms = <1000>;
 
-        rated_voltage = <0x50>;
+        rated_voltage = <0x45>;
     };
 };
 
