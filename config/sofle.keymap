@@ -407,6 +407,16 @@
             flavor = "tap-preferred";
             label = "STRING_WITH_VAR_ON_HOLD";
         };
+
+        single_quote_pair_on_hold: single_quote_pair_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&single_quote_pair_macro>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            label = "SINGLE_QUOTE_PAIR_ON_HOLD";
+        };
     };
 
     macros {
@@ -559,6 +569,13 @@
             bindings = <&kp DOLLAR &kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT &kp F24>;
             label = "STRING_WITH_VAR_MACRO";
         };
+
+        single_quote_pair_macro: single_quote_pair_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp SQT &kp LEFT &kp F24>;
+            label = "SINGLE_QUOTE_PAIR_MACRO";
+        };
     };
 
     combos {
@@ -616,7 +633,7 @@
             display-name = "symbols_2";
             bindings = <
 &kp GRAVE  &kp EXCL                               &parenthesis_pair_on_hold 0 LPAR       &kp RPAR                          &kp BACKSLASH                      &kp BSLH                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &curly_pair_on_hold 0 LBRC             &kp SQT                                &double_quote_pair_on_hold 0 DQT  &kp RBRC                           &kp PLUS                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &curly_pair_on_hold 0 LBRC             &single_quote_pair_on_hold 0 SQT       &double_quote_pair_on_hold 0 DQT  &kp RBRC                           &kp PLUS                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &brackets_pair_on_hold 0 LEFT_BRACKET  &fat_arrow_on_hold 0 EQUAL             &kp LS(UNDER)                     &string_with_var_on_hold 0 DOLLAR  &kp AMPS                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &angle_pair_on_hold 0 LT               &pipe_arrow_on_hold 0 PIPE             &dot_arrow 0 MINUS                &kp GT                             &kp SLASH  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                                   &brackets_pair_on_hold 0 LEFT_BRACKET  &kp RIGHT_BRACKET                 &kp PLUS                           &trans     &trans    &trans  &trans  &trans  &trans  &trans
