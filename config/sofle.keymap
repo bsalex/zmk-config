@@ -632,9 +632,9 @@
         symbols_2 {
             display-name = "symbols_2";
             bindings = <
-&kp GRAVE  &kp EXCL                               &parenthesis_pair_on_hold 0 LPAR       &kp RPAR                          &kp BACKSLASH                      &kp BSLH                     &trans  &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &brackets_pair_on_hold 0 LEFT_BRACKET  &parenthesis_pair_on_hold 0 LPAR       &kp RPAR                          &kp RIGHT_BRACKET                  &kp BSLH                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &curly_pair_on_hold 0 LBRC             &single_quote_pair_on_hold 0 SQT       &double_quote_pair_on_hold 0 DQT  &kp RBRC                           &kp PLUS                     &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &brackets_pair_on_hold 0 LEFT_BRACKET  &fat_arrow_on_hold 0 EQUAL             &kp LS(UNDER)                     &string_with_var_on_hold 0 DOLLAR  &kp AMPS                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp CARET                              &fat_arrow_on_hold 0 EQUAL             &kp LS(UNDER)                     &string_with_var_on_hold 0 DOLLAR  &kp AMPS                     &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &angle_pair_on_hold 0 LT               &pipe_arrow_on_hold 0 PIPE             &dot_arrow 0 MINUS                &kp GT                             &kp SLASH  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                                   &brackets_pair_on_hold 0 LEFT_BRACKET  &kp RIGHT_BRACKET                 &kp PLUS                           &trans     &trans    &trans  &trans  &trans  &trans  &trans
             >;
