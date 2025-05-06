@@ -28,7 +28,7 @@
 
 &right_encoder {
     status = "ok";
-    steps = <120>;
+    steps = <60>;
 };
 
 &sensors { triggers-per-rotation = <30>; };
