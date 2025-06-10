@@ -618,6 +618,11 @@
             key-positions = <56 55>;
             timeout-ms = <100>;
         };
+
+        layers {
+            bindings = <&mo 11>;
+            key-positions = <54 53 52>;
+        };
     };
 
     keymap {
