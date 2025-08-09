@@ -678,6 +678,8 @@
 &trans     &angle_pair_on_hold 0 LT               &pipe_arrow_on_hold 0 PIPE             &dot_arrow 0 MINUS                &kp GT                             &kp SLASH  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                                   &brackets_pair_on_hold 0 LEFT_BRACKET  &kp RIGHT_BRACKET                 &kp PLUS                           &trans     &trans    &trans  &trans  &trans  &trans  &trans
             >;
+
+            sensor-bindings = <&inc_dec_kp A B>, <&inc_dec_kp BACKSPACE SPACE>;
         };
 
         navigation {
