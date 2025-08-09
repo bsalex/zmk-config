@@ -466,7 +466,7 @@
         undo_once: undo_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(Z) &kp F24>;
+            bindings = <&kp LG(Z) &kp F24 &mo 12>;
         };
 
         cut_once: cut_once {
@@ -772,6 +772,18 @@
 &none  &to 10  &none  &none  &none  &none   &trans    &trans  &to 8   &to 0  &none  &none  &none  &none
                &none  &none  &none  &trans  &trans    &trans  &trans  &none  &none  &none
             >;
+        };
+
+        undo_mac {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans     &trans  &trans         &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans     &trans  &trans         &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &kp LG(Z)  &trans  &kp LG(LS(Z))  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans     &trans  &trans         &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans  &none   &trans     &trans  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp A B>, <&inc_dec_kp LG(Z) LG(LS(Z))>;
         };
     };
 
