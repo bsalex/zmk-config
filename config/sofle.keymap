@@ -616,27 +616,10 @@
     combos {
         compatible = "zmk,combos";
 
-        shift_tab_caps {
-            bindings = <&kp CAPSLOCK>;
-            key-positions = <>;
-            layers = <0>;
-        };
-
-        mo_docs_layer {
-            bindings = <&mo 6>;
-            key-positions = <54 53>;
-            timeout-ms = <100>;
-        };
-
         code_edit {
             bindings = <&mo 7>;
             key-positions = <56 55>;
             timeout-ms = <100>;
-        };
-
-        layers {
-            bindings = <&mo 11>;
-            key-positions = <54 53 52>;
         };
     };
 
