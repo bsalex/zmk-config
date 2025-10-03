@@ -636,7 +636,9 @@
                                                                            &dictation_change_mode                    &kp LALT                           &kp LEFT_GUI                              &lt 2 SPACE                        &lt 6 SPACE      &lt 5 SPACE          &lt 3 SPACE                                   &mo 9                              &mo 4                            &dictation_change_mode
             >;
 
-            sensor-bindings = <&inc_dec_kp A B>, <&inc_dec_kp DOWN UP>;
+            sensor-bindings =
+                <&inc_dec_kp A B>,
+                <&inc_dec_kp LG(LA(F14)) LG(LA(F13))>;
         };
 
         linux {
