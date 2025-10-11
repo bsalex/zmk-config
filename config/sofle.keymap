@@ -505,7 +505,12 @@
         triple_backtick_wrap_macro: triple_backtick_wrap_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp LS(ENTER) &kp LG(V) &kp LS(ENTER) &kp GRAVE &kp GRAVE &kp GRAVE>;
+            bindings =
+                <&kp GRAVE &kp GRAVE &kp GRAVE>,
+                <&macro_wait_time 100>,
+                <&kp LS(ENTER) &kp LG(V)>,
+                <&macro_wait_time 15>,
+                <&kp LS(ENTER) &kp GRAVE &kp GRAVE &kp GRAVE>;
         };
 
         docs_reset_format_macro: docs_reset_format_macro {
