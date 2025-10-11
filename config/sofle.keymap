@@ -613,15 +613,7 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        code_edit {
-            bindings = <&mo 0>;
-            key-positions = <56 55>;
-            timeout-ms = <100>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
@@ -697,7 +689,7 @@
 &trans  &kp LC(F13)          &kp LC(F14)          &kp LC(F15)          &kp LC(F16)          &kp LC(F17)                            &kp LC(F18)          &kp LC(F19)          &kp LC(F20)          &kp LC(F21)          &kp LC(F22)          &trans
 &trans  &kp LA(LC(F13))      &kp LA(LC(F14))      &kp LA(LC(F15))      &kp LA(LC(F16))      &kp LA(LC(F17))                        &kp LA(LC(F18))      &kp LA(LC(F19))      &kp LA(LC(F20))      &kp LA(LC(F21))      &kp LA(LC(F22))      &trans
 &trans  &kp LA(LC(LS(F13)))  &kp LA(LS(LC(F14)))  &kp LA(LC(LS(F15)))  &kp LA(LC(LS(F16)))  &kp LA(LC(LS(F17)))  &trans    &trans  &kp LA(LC(LS(F18)))  &kp LA(LS(LC(F19)))  &kp LA(LC(LS(F20)))  &kp LA(LC(LS(F21)))  &kp LA(LC(LS(F22)))  &kp LG(ENTER)
-                             &trans               &trans               &trans               &kp SPACE            &trans    &trans  &trans                   &trans                   &trans                   &trans
+                             &trans               &trans               &trans               &kp SPACE            &trans    &trans  &trans               &trans               &trans               &trans
             >;
 
             sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LA(F18) LA(F19)>;
@@ -750,7 +742,7 @@
         compatible = "zmk,conditional-layers";
 
         to_layers_layer {
-            if-layers = <5 5>;
+            if-layers = <4 7>;
             then-layer = <8>;
         };
     };
