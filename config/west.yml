@@ -19,5 +19,8 @@ manifest:
     - name: zmk-drv2605-driver
       remote: bsalex
       revision: main
+    - name: zmk-behavior-dynamic-macros
+      remote: bsalex
+      revision: main
   self:
     path: config

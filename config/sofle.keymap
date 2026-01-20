@@ -424,6 +424,64 @@
             #binding-cells = <0>;
             mods = <(MOD_LGUI)>;
         };
+
+        dm_record_1: dm_record_1 {
+            compatible = "zmk,behavior-dm-record";
+            #binding-cells = <1>;
+            bindings = <1>;
+        };
+
+        dm_record_2: dm_record_2 {
+            compatible = "zmk,behavior-dm-record";
+            #binding-cells = <1>;
+            bindings = <2>;
+        };
+
+        dm_record_3: dm_record_3 {
+            compatible = "zmk,behavior-dm-record";
+            #binding-cells = <1>;
+            bindings = <3>;
+        };
+
+        dm_play_1: dm_play_1 {
+            compatible = "zmk,behavior-dm-play";
+            #binding-cells = <1>;
+            bindings = <1>;
+        };
+
+        dm_play_2: dm_play_2 {
+            compatible = "zmk,behavior-dm-play";
+            #binding-cells = <1>;
+            bindings = <2>;
+        };
+
+        dm_play_3: dm_play_3 {
+            compatible = "zmk,behavior-dm-play";
+            #binding-cells = <1>;
+            bindings = <3>;
+        };
+
+
+        dm_play_loop_1: dm_play_loop_1 {
+            compatible = "zmk,behavior-dm-play-loop";
+            #binding-cells = <1>;
+            bindings = <1>;
+        };
+
+        dm_record_stop: dm_record_stop {
+            compatible = "zmk,behavior-dm-record-stop";
+            #binding-cells = <0>;
+        };
+
+        dm_play_stop: dm_play_stop {
+            compatible = "zmk,behavior-dm-play-stop";
+            #binding-cells = <0>;
+        };
+
+        dm_reset: dm_reset {
+            compatible = "zmk,behavior-dm-reset";
+            #binding-cells = <0>;
+        };
     };
 
     macros {
@@ -740,6 +798,17 @@
             >;
 
             sensor-bindings = <&inc_dec_kp A B>, <&inc_dec_kp LG(Z) LG(LS(Z))>;
+        };
+
+        macros {
+bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans     &trans  &trans         &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans     &trans  &trans         &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans     &trans  &trans         &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans     &trans  &trans         &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans  &none   &trans     &trans  &trans
+            >;
+
         };
     };
 
