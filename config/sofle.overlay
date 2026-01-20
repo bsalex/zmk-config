@@ -23,7 +23,7 @@
     pinctrl-names = "default", "sleep";
 
     drv2605_0: drv2605@5a {
-        compatible = "ti,drv2605";
+        compatible = "nonstandard,drv2605";
         reg = <0x5a>;
 
         /* Library to use, 0 = Empty, 1-5 are ERM, 6 is LRA. */

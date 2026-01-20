@@ -425,46 +425,19 @@
             mods = <(MOD_LGUI)>;
         };
 
-        dm_record_1: dm_record_1 {
+        dm_record: dm_record {
             compatible = "zmk,behavior-dm-record";
             #binding-cells = <1>;
-            bindings = <1>;
         };
 
-        dm_record_2: dm_record_2 {
-            compatible = "zmk,behavior-dm-record";
-            #binding-cells = <1>;
-            bindings = <2>;
-        };
-
-        dm_record_3: dm_record_3 {
-            compatible = "zmk,behavior-dm-record";
-            #binding-cells = <1>;
-            bindings = <3>;
-        };
-
-        dm_play_1: dm_play_1 {
+        dm_play: dm_play {
             compatible = "zmk,behavior-dm-play";
             #binding-cells = <1>;
-            bindings = <1>;
         };
 
-        dm_play_2: dm_play_2 {
-            compatible = "zmk,behavior-dm-play";
-            #binding-cells = <1>;
-            bindings = <2>;
-        };
-
-        dm_play_3: dm_play_3 {
-            compatible = "zmk,behavior-dm-play";
-            #binding-cells = <1>;
-            bindings = <3>;
-        };
-
-        dm_play_loop_1: dm_play_loop_1 {
+        dm_play_loop: dm_play_loop {
             compatible = "zmk,behavior-dm-play-loop";
             #binding-cells = <1>;
-            bindings = <1>;
         };
 
         dm_record_stop: dm_record_stop {
@@ -801,9 +774,9 @@
 
         macros {
             bindings = <
-&trans  &dm_record_1  &dm_record_2     &dm_record_3   &trans  &trans                    &trans  &trans  &trans           &trans  &trans  &dm_reset
-&trans  &dm_play_1    &dm_play_2       &dm_play_3     &trans  &trans                    &trans  &trans  &trans           &trans  &trans  &trans
-&trans  &trans        &dm_record_stop  &dm_play_stop  &trans  &trans                    &trans  &trans  &dm_play_loop_1  &trans  &trans  &trans
+&trans  &dm_record 1  &dm_record 2     &dm_record 3   &trans  &trans                    &trans  &trans  &trans           &trans  &trans  &dm_reset
+&trans  &dm_play 1    &dm_play 2       &dm_play 3     &trans  &trans                    &trans  &trans  &trans           &trans  &trans  &trans
+&trans  &trans        &dm_record_stop  &dm_play_stop  &trans  &trans                    &trans  &trans  &dm_play_loop 1  &trans  &trans  &trans
 &trans  &trans        &trans           &trans         &trans  &trans  &trans    &trans  &trans  &trans  &trans           &trans  &trans  &trans
                       &trans           &trans         &trans  &trans  &trans    &trans  &trans  &trans  &trans           &trans
             >;
