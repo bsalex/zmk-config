@@ -811,5 +811,10 @@
             if-layers = <10 2>;
             then-layer = <7>;
         };
+
+        macro_layer_trigger {
+            if-layers = <2 5>;
+            then-layer = <10>;
+        };
     };
 };
