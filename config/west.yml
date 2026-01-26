@@ -2,8 +2,6 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: badjeff
-      url-base: https://github.com/badjeff
     - name: bsalex
       url-base: https://github.com/bsalex
     # Additional modules containing boards/shields/custom code can be listed here as well
@@ -13,10 +11,7 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    - name: zmk-output-behavior-listener
-      remote: badjeff
-      revision: main
-    - name: zmk-drv2605-driver
+    - name: zmk-behavior-haptic-drv2605
       remote: bsalex
       revision: main
     - name: zmk-behavior-dynamic-macros

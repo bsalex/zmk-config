@@ -35,6 +35,12 @@
 
 / {
     behaviors {
+        haptic_drv2605: haptic_drv2605 {
+            compatible = "zmk,behavior-haptic-drv2605";
+            #binding-cells = <1>;
+            haptic-device = <&drv2605_0>;
+        };
+
         double_space_to_enter: double_space_to_enter {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -252,34 +258,6 @@
             flavor = "tap-preferred";
         };
 
-        lra0_bump: lra0_bump {
-            compatible = "zmk,output-behavior-generic";
-            #binding-cells = <0>;
-            device = <&lra0>;
-
-            /* force will be convrt to waveformm effect from DRV2605 library */
-            /* NOTE: <7> is Soft Bump at 100% */
-
-            force = <25>;
-        };
-
-        lra0_bump_listener: lra0_bump_listener {
-            compatible = "zmk,output-behavior-listener";
-            layers = < 0 1 2 >;
-            sources = < OUTPUT_SOURCE_KEYCODE_STATE_CHANGE >;
-            #binding-cells = <0>;
-
-            /* set keycode filter here */
-
-            position = < 0x73 >;
-            bindings = < &lra0_bump >;
-
-            /* enable to catch all state change that include key press and release */
-            /* ensure to stop on-going LRA effect immediately on key released */
-
-            all-state;
-        };
-
         mouse_move_up: mouse_move_up {
             compatible = "zmk,behavior-mod-morph";
             bindings = <&mmv MOVE_UP>, <&mmv MOVE_Y(-3000)>;
@@ -466,7 +444,7 @@
         paste_once: paste_plain {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(V) &kp F24>;
+            bindings = <&kp LG(V) &haptic_drv2605 8>;
         };
 
         single_shift_enter: single_shift_enter {
@@ -478,7 +456,7 @@
         copy_once: copy_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(C) &kp F24>;
+            bindings = <&kp LG(C) &haptic_drv2605 8>;
         };
 
         triple_backtick: triple_backtick {
@@ -497,7 +475,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&kp LG(Z) &kp F24 &mo 9>,
+                <&kp LG(Z) &haptic_drv2605 8 &mo 9>,
                 <&macro_press>,
                 <&mo 9>,
                 <&macro_pause_for_release>,
@@ -508,13 +486,13 @@
         cut_once: cut_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(X) &kp F24>;
+            bindings = <&kp LG(X) &haptic_drv2605 8>;
         };
 
         caps_lock_once: caps_lock_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp CAPSLOCK &kp F24>;
+            bindings = <&kp CAPSLOCK &haptic_drv2605 8>;
         };
 
         paste_link_macro: paste_link_macro {
@@ -529,7 +507,7 @@
         insert_bookmark_macro: insert_bookmark {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LA(I))>, <&macro_wait_time 200>, <&kp B &kp F24>;
+            bindings = <&kp LC(LA(I))>, <&macro_wait_time 200>, <&kp B &haptic_drv2605 8>;
         };
 
         triple_backtick_wrap_macro: triple_backtick_wrap_macro {
@@ -564,64 +542,64 @@
         key_once_haptic_macro: key_once_haptic_macro {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp F24>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &haptic_drv2605 8>;
         };
 
         parenthesis_pair_macro: parenthesis_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT &kp F24>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT &haptic_drv2605 8>;
         };
 
         brackets_pair_macro: brackets_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &kp F24>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &haptic_drv2605 8>;
         };
 
         angle_pair_macro: angle_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LT &kp GT &kp LEFT &kp F24>;
+            bindings = <&kp LT &kp GT &kp LEFT &haptic_drv2605 8>;
         };
 
         curly_pair_macro: curly_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LBRC) &kp RBRC &kp LEFT &kp F24>;
+            bindings = <&kp LS(LBRC) &kp RBRC &kp LEFT &haptic_drv2605 8>;
         };
 
         double_quote_pair_macro: double_quote_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT &kp F24>;
+            bindings = <&kp DQT &kp DQT &kp LEFT &haptic_drv2605 8>;
         };
 
         fat_arrow_macro: fat_arrow_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp KP_EQUAL &kp GREATER_THAN &kp F24>;
+            bindings = <&kp KP_EQUAL &kp GREATER_THAN &haptic_drv2605 8>;
             label = "FAT_ARROW_MACRO";
         };
 
         pipe_arrow_macro: pipe_arrow_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp PIPE &kp GREATER_THAN &kp F24>;
+            bindings = <&kp PIPE &kp GREATER_THAN &haptic_drv2605 8>;
             label = "PIPE_ARROW_MACRO";
         };
 
         string_with_var_macro: string_with_var_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOLLAR &kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT &kp F24>;
+            bindings = <&kp DOLLAR &kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT &haptic_drv2605 8>;
             label = "STRING_WITH_VAR_MACRO";
         };
 
         single_quote_pair_macro: single_quote_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp SQT &kp SQT &kp LEFT &kp F24>;
+            bindings = <&kp SQT &kp SQT &kp LEFT &haptic_drv2605 8>;
             label = "SINGLE_QUOTE_PAIR_MACRO";
         };
 

@@ -23,29 +23,15 @@
     pinctrl-names = "default", "sleep";
 
     drv2605_0: drv2605@5a {
-        compatible = "nonstandard,drv2605";
-        reg = <0x5a>;
-
-        /* Library to use, 0 = Empty, 1-5 are ERM, 6 is LRA. */
-        library = <6>;
-
-        /* switch to standby mode after idling for 1000ms */
-        standby-ms = <1000>;
-
-        rated_voltage = <0x45>;
-    };
+		compatible = "ti,drv2605";
+		reg = <0x5a>;
+		vib-rated-mv = <1200>;
+		vib-overdrive-mv = <3600>;
+		actuator-mode = "LRA";
+	};
 };
 
 / {
-    lra0: output_haptic_fb_0 {
-        compatible = "zmk,output-haptic-feedback";
-        #binding-cells = <0>;
-        /* only one driver type is supported now */
-        driver = "drv2605";
-        /* labled i2c device with [zmk-drv2605-driver] */
-        device = <&drv2605_0>;
-    };
-
     chosen {
         
     };
