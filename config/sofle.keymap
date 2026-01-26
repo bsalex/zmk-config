@@ -631,7 +631,7 @@
         };
 
         dm_record_stop_with_confirmation: record_stop_with_confirmation {
-            compatible = "zmk,behavior-macro-one-param";
+            compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&dm_record_stop &haptic_drv2605 12>;
         };
