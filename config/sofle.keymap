@@ -639,7 +639,13 @@
         dm_play_with_confirmation: play_with_confirmation {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &haptic_drv2605 12 &dm_play MACRO_PLACEHOLDER>;
+            bindings = <&macro_param_1to1 &haptic_drv2605 12 &macro_wait_time 1000 &dm_play MACRO_PLACEHOLDER>;
+        };
+
+        dm_play_loop_with_confirmation: dm_play_loop_with_confirmation {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &haptic_drv2605 12 &macro_wait_time 1000 &dm_play_loop MACRO_PLACEHOLDER>;
         };
     };
 
@@ -771,7 +777,7 @@
             bindings = <
 &trans  &dm_record_with_confirmation 1  &dm_record_with_confirmation 2     &dm_record_with_confirmation 3   &trans  &trans                    &trans  &trans  &trans           &trans  &trans  &dm_reset
 &trans  &dm_play_with_confirmation 1    &dm_play_with_confirmation 2       &dm_play_with_confirmation 3     &trans  &trans                    &trans  &trans  &trans           &trans  &trans  &trans
-&trans  &trans        &dm_record_stop_with_confirmation  &dm_play_stop  &trans  &trans                    &trans  &trans  &trans &dm_play_loop 1  &trans  &trans
+&trans  &trans        &dm_record_stop_with_confirmation  &dm_play_stop  &trans  &trans                    &trans  &trans  &trans &dm_play_loop_with_confirmation 1  &trans  &trans
 &trans  &trans        &trans           &trans         &trans  &trans  &trans    &trans  &trans  &trans  &trans           &trans  &trans  &trans
                       &trans           &trans         &trans  &trans  &trans    &trans  &trans  &trans  &trans           &trans
             >;
