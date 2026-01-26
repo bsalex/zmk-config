@@ -771,7 +771,7 @@
             bindings = <
 &trans  &dm_record_with_confirmation 1  &dm_record_with_confirmation 2     &dm_record_with_confirmation 3   &trans  &trans                    &trans  &trans  &trans           &trans  &trans  &dm_reset
 &trans  &dm_play_with_confirmation 1    &dm_play_with_confirmation 2       &dm_play_with_confirmation 3     &trans  &trans                    &trans  &trans  &trans           &trans  &trans  &trans
-&trans  &trans        &dm_record_stop_with_confirmation  &dm_play_stop  &trans  &trans                    &trans  &trans  &dm_play_loop 1  &trans  &trans  &trans
+&trans  &trans        &dm_record_stop_with_confirmation  &dm_play_stop  &trans  &trans                    &trans  &trans  &trans &dm_play_loop 1  &trans  &trans
 &trans  &trans        &trans           &trans         &trans  &trans  &trans    &trans  &trans  &trans  &trans           &trans  &trans  &trans
                       &trans           &trans         &trans  &trans  &trans    &trans  &trans  &trans  &trans           &trans
             >;
