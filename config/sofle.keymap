@@ -662,9 +662,23 @@
             #binding-cells = <0>;
             bindings = <&haptic_drv2605 7>;
         };
+
+        mouse_reset_position: mouse_reset_position {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_Y(600) &mmv MOVE_X(-600)>;
+            label = "MOUSE_RESET_POSITION";
+        };
     };
 
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        to_pointer_layer {
+            bindings = <&mo 7>;
+            key-positions = <53 36>;
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -758,11 +772,11 @@
 
         pointer {
             bindings = <
-&trans  &trans  &trans     &trans     &trans     &trans                    &kp PAGE_UP     &msc SCRL_LEFT    &msc SCRL_RIGHT   &trans             &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans                    &msc SCRL_UP    &mkp LCLK         &mouse_move_up    &mkp RCLK          &trans  &trans
-&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans                    &msc SCRL_DOWN  &mouse_move_left  &mouse_move_down  &mouse_move_right  &trans  &trans
-&trans  &trans  &trans     &trans     &trans     &trans  &trans    &trans  &kp PAGE_DOWN   &trans            &trans            &trans             &trans  &trans
-                &trans     &trans     &trans     &trans  &trans    &trans  &mkp LCLK       &mkp LCLK         &trans            &trans
+&trans  &trans  &trans     &trans     &trans     &trans                       &kp PAGE_UP     &msc SCRL_LEFT    &msc SCRL_RIGHT   &trans             &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &trans                       &msc SCRL_UP    &mkp LCLK         &mouse_move_up    &mkp RCLK          &trans  &trans
+&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &kp LCTRL                    &msc SCRL_DOWN  &mouse_move_left  &mouse_move_down  &mouse_move_right  &trans  &trans
+&trans  &trans  &trans     &trans     &trans     &kp LCTRL  &trans    &trans  &kp PAGE_DOWN   &trans            &trans            &trans             &trans  &trans
+                &trans     &trans     &trans     &trans     &trans    &trans  &mkp LCLK       &mkp LCLK         &trans            &trans
             >;
         };
 
@@ -805,11 +819,6 @@
         to_layers_layer {
             if-layers = <4 7>;
             then-layer = <8>;
-        };
-
-        left_poiner_trigger {
-            if-layers = <10 2>;
-            then-layer = <7>;
         };
 
         macro_layer_trigger {
