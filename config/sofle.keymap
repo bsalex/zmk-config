@@ -443,7 +443,7 @@
         paste_once: paste_plain {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(V) &haptic_drv2605 8>;
+            bindings = <&kp LG(V) &haptic_long_press>;
         };
 
         single_shift_enter: single_shift_enter {
@@ -455,7 +455,7 @@
         copy_once: copy_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(C) &haptic_drv2605 8>;
+            bindings = <&kp LG(C) &haptic_long_press>;
         };
 
         triple_backtick: triple_backtick {
@@ -474,7 +474,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&kp LG(Z) &haptic_drv2605 8 &mo 9>,
+                <&kp LG(Z) &haptic_long_press &mo 9>,
                 <&macro_press>,
                 <&mo 9>,
                 <&macro_pause_for_release>,
@@ -485,13 +485,13 @@
         cut_once: cut_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LG(X) &haptic_drv2605 8>;
+            bindings = <&kp LG(X) &haptic_long_press>;
         };
 
         caps_lock_once: caps_lock_once {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp CAPSLOCK &haptic_drv2605 8>;
+            bindings = <&kp CAPSLOCK &haptic_long_press>;
         };
 
         paste_link_macro: paste_link_macro {
@@ -506,7 +506,7 @@
         insert_bookmark_macro: insert_bookmark {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(LA(I))>, <&macro_wait_time 200>, <&kp B &haptic_drv2605 8>;
+            bindings = <&kp LC(LA(I))>, <&macro_wait_time 200>, <&kp B &haptic_long_press>;
         };
 
         triple_backtick_wrap_macro: triple_backtick_wrap_macro {
@@ -541,64 +541,64 @@
         key_once_haptic_macro: key_once_haptic_macro {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &haptic_drv2605 8>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &haptic_long_press>;
         };
 
         parenthesis_pair_macro: parenthesis_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT &haptic_drv2605 8>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT &haptic_long_press>;
         };
 
         brackets_pair_macro: brackets_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &haptic_drv2605 8>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &haptic_long_press>;
         };
 
         angle_pair_macro: angle_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LT &kp GT &kp LEFT &haptic_drv2605 8>;
+            bindings = <&kp LT &kp GT &kp LEFT &haptic_long_press>;
         };
 
         curly_pair_macro: curly_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LBRC) &kp RBRC &kp LEFT &haptic_drv2605 8>;
+            bindings = <&kp LS(LBRC) &kp RBRC &kp LEFT &haptic_long_press>;
         };
 
         double_quote_pair_macro: double_quote_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT &haptic_drv2605 8>;
+            bindings = <&kp DQT &kp DQT &kp LEFT &haptic_long_press>;
         };
 
         fat_arrow_macro: fat_arrow_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp KP_EQUAL &kp GREATER_THAN &haptic_drv2605 8>;
+            bindings = <&kp KP_EQUAL &kp GREATER_THAN &haptic_long_press>;
             label = "FAT_ARROW_MACRO";
         };
 
         pipe_arrow_macro: pipe_arrow_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp PIPE &kp GREATER_THAN &haptic_drv2605 8>;
+            bindings = <&kp PIPE &kp GREATER_THAN &haptic_long_press>;
             label = "PIPE_ARROW_MACRO";
         };
 
         string_with_var_macro: string_with_var_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOLLAR &kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT &haptic_drv2605 8>;
+            bindings = <&kp DOLLAR &kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT &haptic_long_press>;
             label = "STRING_WITH_VAR_MACRO";
         };
 
         single_quote_pair_macro: single_quote_pair_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp SQT &kp SQT &kp LEFT &haptic_drv2605 8>;
+            bindings = <&kp SQT &kp SQT &kp LEFT &haptic_long_press>;
             label = "SINGLE_QUOTE_PAIR_MACRO";
         };
 
@@ -646,6 +646,12 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&macro_param_1to1 &haptic_drv2605 12 &macro_wait_time 1000 &dm_play_loop MACRO_PLACEHOLDER>;
+        };
+
+        haptic_long_press: haptic_long_press {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&haptic_drv2605 7>;
         };
     };
 
