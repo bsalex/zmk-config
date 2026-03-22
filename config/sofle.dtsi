@@ -42,5 +42,14 @@
             #binding-cells = <1>;
             haptic-device = <&drv2605_0>;
         };
+
+        haptic_drv2605_right: haptic_drv2605_right {
+            compatible = "zmk,behavior-haptic-drv2605";
+            #binding-cells = <1>;
+            haptic-device = <&drv2605_right>;
+        };
     };
+
+
 };
+

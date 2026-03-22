@@ -1,0 +1,13 @@
+#include "sofle.dtsi"
+
+/ {
+    drv2605_right: drv2605_right {
+        compatible = "zmk,haptic-output-proxy";
+    };
+
+    output_relay_config_201: output_relay_config_201 {
+        compatible = "zmk,split-peripheral-output-relay";
+        device = <&drv2605_right>;
+        relay-channel = <201>;
+    };
+};
