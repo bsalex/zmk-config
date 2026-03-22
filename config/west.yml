@@ -17,7 +17,7 @@ manifest:
     - name: zmk-behavior-dynamic-macros
       remote: bsalex
       revision: main
-    - name: zmk-split-peripheral-output-relays
+    - name: zmk-split-peripheral-output-relay
       remote: bsalex
       revision: main
   self:
