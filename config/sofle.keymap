@@ -692,7 +692,7 @@
 
         to_pointer_layer {
             bindings = <&mo 7>;
-            key-positions = <53 36>;
+            key-positions = <36 54>;
         };
     };
 
