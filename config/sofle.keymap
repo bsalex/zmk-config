@@ -171,7 +171,7 @@
 
         shift_esc: shift_esc {
             compatible = "zmk,behavior-mod-morph";
-            bindings = <&esc_tapdance>, <&kp TILDE>;
+            bindings = <&esc_double_on_hold>, <&kp TILDE>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
@@ -179,8 +179,7 @@
 
         esc_double_on_hold: esc_double_on_hold {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&esc_double_macro>, <&double_esc_tapdance>;
-
+            bindings = <&esc_double_macro>, <&esc_tapdance>;
             #binding-cells = <2>;
             tapping-term-ms = <500>;
             flavor = "tap-preferred";
@@ -456,7 +455,7 @@
         esc_double_macro: esc_double_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp ESCAPE &kp ESCAPE>;
+            bindings = <&kp ESCAPE &kp ESCAPE &haptic_long_press>;
         };
 
         paste_once: paste_plain {
