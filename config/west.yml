@@ -20,5 +20,8 @@ manifest:
     - name: zmk-split-peripheral-output-relay
       remote: bsalex
       revision: main
+    - name: zmk-behavior-staged-hold
+      remote: bsalex
+      revision: main
   self:
     path: config
