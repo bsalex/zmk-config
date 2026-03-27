@@ -44,6 +44,24 @@
             after-timeout-bindings = <&kp LA(BACKSPACE)>;
         };
 
+        left_staged_hold: left_staged_hold {
+            compatible = "zmk,behavior-staged-hold";
+            #binding-cells = <0>;
+            
+            timeout-ms = <2000>;
+            on-press-bindings = <&kp LEFT>;
+            after-timeout-bindings = <&kp LA(LEFT)>;
+        };
+
+        right_staged_hold: right_staged_hold {
+            compatible = "zmk,behavior-staged-hold";
+            #binding-cells = <0>;
+            
+            timeout-ms = <2000>;
+            on-press-bindings = <&kp RIGHT>;
+            after-timeout-bindings = <&kp LA(RIGHT)>;
+        };
+
 
         double_space_to_enter: double_space_to_enter {
             compatible = "zmk,behavior-tap-dance";
@@ -770,7 +788,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP  &kp LG(UP_ARROW)    &kp LA(UP)             &trans         &trans   &kp LA(BACKSPACE)
 &trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_DN  &kp LA(LEFT)        &kp UP                 &kp LA(RIGHT)  &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &kp LEFT            &kp DOWN               &kp RIGHT      &kp END  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &left_staged_hold            &kp DOWN               &right_staged_hold      &kp END  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &kp LG(DOWN_ARROW)  &kp LS(LG(LC(RIGHT)))  &trans         &trans   &kp LS(ENTER)
                 &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans              &trans                 &trans
             >;
