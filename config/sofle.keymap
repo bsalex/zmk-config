@@ -437,7 +437,7 @@
         dictation_change_mode: dictation_change_mode {
             compatible = "zmk,behavior-mod-morph";
             label = "DICTATION_CHANGE_MODE";
-            bindings = <&dictation_tap_hold>, <&kp LA(LG(SPACE))>;
+            bindings = <&dictation_tap_hold 0 0>, <&kp LA(LG(SPACE))>;
 
             #binding-cells = <0>;
             mods = <(MOD_LGUI)>;
