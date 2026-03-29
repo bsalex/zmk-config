@@ -437,10 +437,19 @@
         dictation_change_mode: dictation_change_mode {
             compatible = "zmk,behavior-mod-morph";
             label = "DICTATION_CHANGE_MODE";
-            bindings = <&dictation_alt_toggle_macro>, <&kp LA(LG(SPACE))>;
+            bindings = <&dictation_tap_hold>, <&kp LA(LG(SPACE))>;
 
             #binding-cells = <0>;
             mods = <(MOD_LGUI)>;
+        };
+
+        dictation_tap_hold: dictation_tap_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&dictation_alt_toggle_macro>, <&kp LA(SPACE)>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
         };
 
         dm_record: dm_record {
