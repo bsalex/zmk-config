@@ -445,7 +445,7 @@
 
         dictation_tap_hold: dictation_tap_hold {
             compatible = "zmk,behavior-hold-tap";
-            bindings = <&dictation_alt_toggle_macro>, <&kp LA(SPACE)>;
+            bindings = <&dictation_alt_toggle_macro, &kp LA(SPACE)>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
