@@ -437,7 +437,7 @@
         dictation_change_mode: dictation_change_mode {
             compatible = "zmk,behavior-mod-morph";
             label = "DICTATION_CHANGE_MODE";
-            bindings = <&dictation_tap_hold LA(SPACE)>, <&kp LA(LG(SPACE))>;
+            bindings = <&dictation_tap_hold LA(SPACE) LA(SPACE)>, <&kp LA(LG(SPACE))>;
 
             #binding-cells = <0>;
             mods = <(MOD_LGUI)>;
@@ -447,7 +447,7 @@
             compatible = "zmk,behavior-hold-tap";
             bindings = <&dictation_alt_toggle_macro>, <&kp>;
 
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
