@@ -23,5 +23,8 @@ manifest:
     - name: zmk-behavior-staged-hold
       remote: bsalex
       revision: main
+    - name: zmk-behavior-interval-repeat
+      remote: bsalex
+      revision: main
   self:
     path: config
