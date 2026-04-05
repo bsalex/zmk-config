@@ -187,6 +187,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <150>;
+            require-prior-idle-ms = <200>;
         };
 
         ctrl_esc: ctrl_esc {
