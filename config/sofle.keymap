@@ -38,7 +38,6 @@
         backspace_staged_hold: backspace_staged_hold {
             compatible = "zmk,behavior-staged-hold";
             #binding-cells = <0>;
-            
             timeout-ms = <2000>;
             on-press-bindings = <&kp BACKSPACE>;
             after-timeout-bindings = <&kp LA(BACKSPACE)>;
@@ -47,7 +46,6 @@
         left_staged_hold: left_staged_hold {
             compatible = "zmk,behavior-staged-hold";
             #binding-cells = <0>;
-            
             timeout-ms = <2000>;
             on-press-bindings = <&kp LEFT>;
             after-timeout-bindings = <&kp LA(LEFT)>;
@@ -56,12 +54,10 @@
         right_staged_hold: right_staged_hold {
             compatible = "zmk,behavior-staged-hold";
             #binding-cells = <0>;
-            
             timeout-ms = <2000>;
             on-press-bindings = <&kp RIGHT>;
             after-timeout-bindings = <&kp LA(RIGHT)>;
         };
-
 
         double_space_to_enter: double_space_to_enter {
             compatible = "zmk,behavior-tap-dance";
@@ -438,7 +434,9 @@
         dictation_change_mode: dictation_change_mode {
             compatible = "zmk,behavior-mod-morph";
             label = "DICTATION_CHANGE_MODE";
-            bindings = <&dictation_tap_hold LA(SPACE) LA(SPACE)>, <&kp LA(LG(SPACE))>;
+            bindings =
+                <&dictation_tap_hold LA(SPACE) LA(SPACE)>,
+                <&kp LA(LG(SPACE))>;
 
             #binding-cells = <0>;
             mods = <(MOD_LGUI)>;
@@ -452,8 +450,6 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
         };
-
-
 
         dm_record: dm_record {
             compatible = "zmk,behavior-dm-record";
@@ -749,6 +745,24 @@
             bindings = <&mo 7>;
             key-positions = <28 27 26 25>;
         };
+
+        app_switch {
+            bindings = <&kp LA(TAB)>;
+            key-positions = <28 27>;
+            require-prior-idle-ms = <100>;
+            timeout-ms = <50>;
+            layers = <0>;
+            slow-release;
+        };
+
+        window_switch {
+            bindings = <&none>;
+            key-positions = <15 16>;
+            slow-release;
+            timeout-ms = <100>;
+            require-prior-idle-ms = <50>;
+            layers = <0>;
+        };
     };
 
     keymap {
@@ -798,10 +812,10 @@
         navigation {
             display-name = "navigation";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP  &kp LG(UP_ARROW)    &kp LA(UP)             &trans         &trans   &kp LA(BACKSPACE)
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_DN  &kp LA(LEFT)        &kp UP                 &kp LA(RIGHT)  &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &left_staged_hold            &kp DOWN               &right_staged_hold      &kp END  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &kp LG(DOWN_ARROW)  &kp LS(LG(LC(RIGHT)))  &trans         &trans   &kp LS(ENTER)
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP  &kp LG(UP_ARROW)    &kp LA(UP)             &trans              &trans   &kp LA(BACKSPACE)
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_DN  &kp LA(LEFT)        &kp UP                 &kp LA(RIGHT)       &trans   &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &left_staged_hold   &kp DOWN               &right_staged_hold  &kp END  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &kp LG(DOWN_ARROW)  &kp LS(LG(LC(RIGHT)))  &trans              &trans   &kp LS(ENTER)
                 &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans              &trans                 &trans
             >;
 
