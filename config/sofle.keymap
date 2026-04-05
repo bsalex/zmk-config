@@ -18,11 +18,26 @@
 #define OUTPUT_SOURCE_KEYCODE_STATE_CHANGE 3
 #define MAC_BASE_LAYER 0
 #define LINUX_LAYER 1
-#define SYMBOLS_2_LAYER 2
-#define NAVIGATION_LAYER 3
-#define CONNECTIVITY_LAYER 4
-#define CODE_NAVIGATION_LAYER 5
-#define SYMBOLS_LAYER 6
+#define SYMBOLS_LAYER 2
+#define NAVIGATION_LAYER_MAC 3
+#define NAVIGATION_LAYER_LINUX 4
+#define CONNECTIVITY_LAYER 5
+#define APP_ACTIONS_LAYER 6
+#define FN_AND_NUMBERS_LAYER 7
+#define POINTER_LAYER 8
+#define LAYERS_LAYER 9
+#define UNDO_MAC_LAYER 10
+#define MACROS_LAYER 11
+#define APP_SWITCH_LAYER_LNX 12
+#define WINDOW_SWITCH_LAYER_LNX 13
+#define APP_SWITCH_LAYER_MAC 14
+#define WINDOW_SWITCH_LAYER_MAC 15
+
+#define SWITCH_COMBOS_TIMEOUT_MS 40
+#define SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS 300
+
+#define STAGED_HOLD_TIMEOUT_MS 2000
+#define STAGED_HOLD_WORD_STEP_MS 100
 
 &left_encoder { status = "disabled"; };
 
@@ -35,42 +50,86 @@
 
 / {
     behaviors {
-        backspace_staged_hold: backspace_staged_hold {
-            compatible = "zmk,behavior-staged-hold";
+        backspace_words_mac: backspace_words_mac {
+            compatible = "zmk,behavior-interval-repeat";
             #binding-cells = <0>;
-            timeout-ms = <2000>;
-            on-press-bindings = <&kp BACKSPACE>;
-            after-timeout-bindings = <&kp LA(BACKSPACE)>;
+            interval-ms = <STAGED_HOLD_WORD_STEP_MS>;
+            bindings = <&kp LA(BACKSPACE)>;
         };
 
-        left_staged_hold: left_staged_hold {
+        backspace_staged_hold_mac: backspace_staged_hold_mac {
             compatible = "zmk,behavior-staged-hold";
             #binding-cells = <0>;
-            timeout-ms = <2000>;
+            timeout-ms = <STAGED_HOLD_TIMEOUT_MS>;
+            on-press-bindings = <&kp BACKSPACE>;
+            after-timeout-bindings = <&backspace_words_mac>;
+        };
+
+        left_staged_hold_mac: left_staged_hold_mac {
+            compatible = "zmk,behavior-staged-hold";
+            #binding-cells = <0>;
+            timeout-ms = <STAGED_HOLD_TIMEOUT_MS>;
             on-press-bindings = <&kp LEFT>;
             after-timeout-bindings = <&kp LA(LEFT)>;
         };
 
-        right_staged_hold: right_staged_hold {
+        right_staged_hold_mac: right_staged_hold_mac {
             compatible = "zmk,behavior-staged-hold";
             #binding-cells = <0>;
-            timeout-ms = <2000>;
+            timeout-ms = <STAGED_HOLD_TIMEOUT_MS>;
             on-press-bindings = <&kp RIGHT>;
             after-timeout-bindings = <&kp LA(RIGHT)>;
+        };
+
+        backspace_words_lnx: backspace_words_lnx {
+            compatible = "zmk,behavior-interval-repeat";
+            #binding-cells = <0>;
+            interval-ms = <STAGED_HOLD_WORD_STEP_MS>;
+            bindings = <&kp LC(BACKSPACE)>;
+        };
+
+        backspace_staged_hold_lnx: backspace_staged_hold_lnx {
+            compatible = "zmk,behavior-staged-hold";
+            #binding-cells = <0>;
+            timeout-ms = <STAGED_HOLD_TIMEOUT_MS>;
+            on-press-bindings = <&kp BACKSPACE>;
+            after-timeout-bindings = <&backspace_words_lnx>;
+        };
+
+        left_words_lnx: left_words_lnx {
+            compatible = "zmk,behavior-interval-repeat";
+            #binding-cells = <0>;
+            interval-ms = <STAGED_HOLD_WORD_STEP_MS>;
+            bindings = <&kp LC(LEFT)>;
+        };
+
+        left_staged_hold_lnx: left_staged_hold_lnx {
+            compatible = "zmk,behavior-staged-hold";
+            #binding-cells = <0>;
+            timeout-ms = <STAGED_HOLD_TIMEOUT_MS>;
+            on-press-bindings = <&kp LEFT>;
+            after-timeout-bindings = <&left_words_lnx>;
+        };
+
+        right_words_lnx: right_words_lnx {
+            compatible = "zmk,behavior-interval-repeat";
+            #binding-cells = <0>;
+            interval-ms = <STAGED_HOLD_WORD_STEP_MS>;
+            bindings = <&kp LC(RIGHT)>;
+        };
+
+        right_staged_hold_lnx: right_staged_hold_lnx {
+            compatible = "zmk,behavior-staged-hold";
+            #binding-cells = <0>;
+            timeout-ms = <STAGED_HOLD_TIMEOUT_MS>;
+            on-press-bindings = <&kp RIGHT>;
+            after-timeout-bindings = <&right_words_lnx>;
         };
 
         double_space_to_enter: double_space_to_enter {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            bindings = <&lt 2 SPACE>, <&kp ENTER>;
-        };
-
-        f4_enter: f4_enter {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            bindings = <&lt SYMBOLS_LAYER SPACE>, <&kp ENTER>;
         };
 
         gresc_ctrl: gresc_ctrl {
@@ -529,12 +588,12 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&kp LG(Z) &haptic_long_press &mo 9>,
+                <&kp LG(Z) &haptic_long_press>,
                 <&macro_press>,
-                <&mo 9>,
+                <&mo UNDO_MAC_LAYER>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
-                <&mo 9>;
+                <&mo UNDO_MAC_LAYER>;
         };
 
         cut_once: cut_once {
@@ -736,32 +795,227 @@
             bindings = <&mmv MOVE_Y(600) &mmv MOVE_X(-600)>;
             label = "MOUSE_RESET_POSITION";
         };
+
+        app_switch_start_lnx: app_switch_start_lnx {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &mo APP_SWITCH_LAYER_LNX &kp LEFT_ALT &macro_tap &kp TAB>;
+        };
+
+        app_switch_start_mac: app_switch_start_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &mo APP_SWITCH_LAYER_MAC &kp LEFT_GUI &macro_tap &kp TAB>;
+        };
+
+        app_switch_confirm: app_switch_confirm {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_release &kp LEFT_GUI &kp LEFT_ALT &mo APP_SWITCH_LAYER_MAC &mo APP_SWITCH_LAYER_LNX &macro_tap>;
+        };
+
+        app_switch_cancel: app_switch_cancel {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp ESC &macro_release &kp LEFT_GUI &kp LEFT_ALT &mo APP_SWITCH_LAYER_MAC &mo APP_SWITCH_LAYER_LNX>;
+        };
+
+        window_switch_start_lnx: window_switch_start_lnx {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &mo WINDOW_SWITCH_LAYER_LNX &kp LEFT_ALT &macro_tap &kp GRAVE>;
+        };
+
+        window_switch_start_mac: window_switch_start_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &mo WINDOW_SWITCH_LAYER_MAC &kp LEFT_GUI &macro_tap &kp GRAVE>;
+        };
+
+        window_switch_confirm: window_switch_confirm {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_release &kp LEFT_ALT &kp LEFT_GUI &mo WINDOW_SWITCH_LAYER_LNX &mo WINDOW_SWITCH_LAYER_MAC &macro_tap>;
+        };
+
+        window_switch_cancel: window_switch_cancel {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp ESC &macro_release &kp LEFT_ALT &kp LEFT_GUI &mo WINDOW_SWITCH_LAYER_LNX &mo WINDOW_SWITCH_LAYER_MAC>;
+        };
+
+        app_switch_to_window_switch_lnx: app_switch_to_window_switch_lnx {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&app_switch_cancel &window_switch_start_lnx>;
+        };
+
+        app_switch_to_window_switch_mac: app_switch_to_window_switch_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&app_switch_cancel &window_switch_start_mac>;
+        };
+
+        window_switch_to_app_switch_lnx: window_switch_to_app_switch_lnx {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&window_switch_cancel &app_switch_start_lnx>;
+        };
+
+        window_switch_to_app_switch_mac: window_switch_to_app_switch_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&window_switch_cancel &app_switch_start_mac>;
+        };
+
     };
 
     combos {
         compatible = "zmk,combos";
 
         to_pointer_layer {
-            bindings = <&mo 7>;
+            bindings = <&mo POINTER_LAYER>;
             key-positions = <28 27 26 25>;
         };
 
-        app_switch {
-            bindings = <&kp LA(TAB)>;
+        app_switch_lnx {
+            bindings = <&app_switch_start_lnx>;
             key-positions = <28 27>;
-            require-prior-idle-ms = <100>;
-            timeout-ms = <50>;
-            layers = <0>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <LINUX_LAYER>;
             slow-release;
         };
 
-        window_switch {
-            bindings = <&none>;
+        app_switch_mac {
+            bindings = <&app_switch_start_mac>;
+            key-positions = <28 27>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <MAC_BASE_LAYER>;
+            slow-release;
+        };
+
+        app_switch_previous_fast_lnx {
+            bindings = <&kp LA(TAB)>;
+            key-positions = <26 27 28>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <LINUX_LAYER>;
+        };
+
+        app_switch_previous_fast_mac {
+            bindings = <&kp LG(TAB)>;
+            key-positions = <26 27 28>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <MAC_BASE_LAYER>;
+        };
+
+        app_switch_on_app_switch_layer_lnx {
+            bindings = <&app_switch_cancel>;
+            key-positions = <28 27>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <APP_SWITCH_LAYER_LNX>;
+            slow-release;
+        };
+
+        app_switch_on_app_switch_layer_mac {
+            bindings = <&app_switch_cancel>;
+            key-positions = <28 27>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <APP_SWITCH_LAYER_MAC>;
+            slow-release;
+        };
+
+        app_switch_on_window_switch_layer_lnx {
+            bindings = <&window_switch_to_app_switch_lnx>;
+            key-positions = <28 27>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <WINDOW_SWITCH_LAYER_LNX>;
+            slow-release;
+        };
+
+        app_switch_on_window_switch_layer_mac {
+            bindings = <&window_switch_to_app_switch_mac>;
+            key-positions = <28 27>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <WINDOW_SWITCH_LAYER_MAC>;
+            slow-release;
+        };
+
+        window_switch_lnx {
+            bindings = <&window_switch_start_lnx>;
             key-positions = <15 16>;
             slow-release;
-            timeout-ms = <100>;
-            require-prior-idle-ms = <50>;
-            layers = <0>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <LINUX_LAYER>;
+        };
+
+        window_switch_mac {
+            bindings = <&window_switch_start_mac>;
+            key-positions = <15 16>;
+            slow-release;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <MAC_BASE_LAYER>;
+        };
+
+        window_switch_previous_fast_lnx {
+            bindings = <&kp LA(GRAVE)>;
+            key-positions = <14 15 16>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <LINUX_LAYER>;
+        };
+
+        window_switch_previous_fast_mac {
+            bindings = <&kp LG(GRAVE)>;
+            key-positions = <14 15 16>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <MAC_BASE_LAYER>;
+        };
+
+        window_switch_on_window_switch_layer_lnx {
+            bindings = <&window_switch_cancel>;
+            key-positions = <15 16>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <WINDOW_SWITCH_LAYER_LNX>;
+            slow-release;
+        };
+
+        window_switch_on_window_switch_layer_mac {
+            bindings = <&window_switch_cancel>;
+            key-positions = <15 16>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <WINDOW_SWITCH_LAYER_MAC>;
+            slow-release;
+        };
+
+        window_switch_on_app_switch_layer_lnx {
+            bindings = <&app_switch_to_window_switch_lnx>;
+            key-positions = <15 16>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <APP_SWITCH_LAYER_LNX>;
+            slow-release;
+        };
+
+        window_switch_on_app_switch_layer_mac {
+            bindings = <&app_switch_to_window_switch_mac>;
+            key-positions = <15 16>;
+            require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
+            timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
+            layers = <APP_SWITCH_LAYER_MAC>;
+            slow-release;
         };
     };
 
@@ -771,11 +1025,11 @@
         mac {
             display-name = "mac";
             bindings = <
-&ctrl_esc                        &delayed_tap_once_on_hold F1 N1           &delayed_tap_once_on_hold F2 N2           &delayed_tap_once_on_hold F3 N3    &delayed_tap_once_on_hold F4 N4           &delayed_tap_once_on_hold F5 N5                                             &delayed_tap_once_on_hold F6 N6               &delayed_tap_once_on_hold F7 N7    &delayed_tap_once_on_hold F8 N8  &delayed_tap_once_on_hold F9 N9                     &delayed_tap_once_on_hold F10 N0  &backspace_staged_hold
+&ctrl_esc                        &delayed_tap_once_on_hold F1 N1           &delayed_tap_once_on_hold F2 N2           &delayed_tap_once_on_hold F3 N3    &delayed_tap_once_on_hold F4 N4           &delayed_tap_once_on_hold F5 N5                                             &delayed_tap_once_on_hold F6 N6               &delayed_tap_once_on_hold F7 N7    &delayed_tap_once_on_hold F8 N8  &delayed_tap_once_on_hold F9 N9                     &delayed_tap_once_on_hold F10 N0  &backspace_staged_hold_mac
 &caps_lock_once_on_hold 0 TAB    &delayed_tap_hold_one LG(LC(Q)) Q         &delayed_tap_hold_one LS(LA(W)) W         &delayed_tap_hold_one LA(LS(E)) E  &delayed_tap_hold_one LA(LS(R)) R         &delayed_tap_hold_one LG(LC(T)) T                                           &delayed_tap_hold_one LA(Y) Y                 &kp U                              &delayed_tap_hold_one LG(I) I    &delayed_tap_once_haptic_on_hold_right LA(LS(O)) O  &delayed_tap_once_on_hold F11 P   &delayed_tap_once_on_hold F12 LEFT_BRACKET
-&kp LEFT_SHIFT                   &delayed_tap_once_haptic_on_hold LG(A) A  &delayed_tap_once_haptic_on_hold LG(S) S  &delayed_tap_hold_one LA(LS(D)) D  &delayed_tap_once_haptic_on_hold LG(F) F  &delayed_tap_hold_one LS(LA(G)) G                                           &delayed_tap_once_haptic_on_hold LC(LG(H)) H  &kp J                              &kp K                            &delayed_tap_once_haptic_on_hold_right LS(LA(S)) L  &kp SEMI                          &lt 10 SQT
-&control_tapdance_to_suggestion  &undo_once_on_hold 0 Z                    &cut_once_on_hold 0 X                     &copy_once_on_hold 0 C             &paste_on_hold_once 0 V                   &delayed_tap_hold_one LA(LS(B)) B  &lt 10 LC(LG(H))    &kp LC(LA(LG(F13)))  &kp N                                         &delayed_tap_hold_one LS(LA(M)) M  &kp COMMA                        &dot_arrow 0 DOT                                    &kp FSLH                          &kp ENTER
-                                                                           &dictation_change_mode                    &kp LALT                           &kp LEFT_GUI                              &lt 2 SPACE                        &lt 5 SPACE         &lt 5 SPACE          &lt 3 SPACE                                   &mo 7                              &mo 4                            &dictation_change_mode
+&kp LEFT_SHIFT                   &delayed_tap_once_haptic_on_hold LG(A) A  &delayed_tap_once_haptic_on_hold LG(S) S  &delayed_tap_hold_one LA(LS(D)) D  &delayed_tap_once_haptic_on_hold LG(F) F  &delayed_tap_hold_one LS(LA(G)) G                                           &delayed_tap_once_haptic_on_hold LC(LG(H)) H  &kp J                              &kp K                            &delayed_tap_once_haptic_on_hold_right LS(LA(S)) L  &kp SEMI                          &kp SQT
+&control_tapdance_to_suggestion  &undo_once_on_hold 0 Z                    &cut_once_on_hold 0 X                     &copy_once_on_hold 0 C             &paste_on_hold_once 0 V                   &delayed_tap_hold_one LA(LS(B)) B  &lt MACROS_LAYER LC(LG(H))    &kp LC(LA(LG(F13)))  &kp N                                         &delayed_tap_hold_one LS(LA(M)) M  &kp COMMA                        &dot_arrow 0 DOT                                    &kp FSLH                          &kp ENTER
+                                                                           &dictation_change_mode                    &kp LALT                           &kp LEFT_GUI                              &lt SYMBOLS_LAYER SPACE                        &lt APP_ACTIONS_LAYER SPACE         &lt APP_ACTIONS_LAYER SPACE          &lt NAVIGATION_LAYER_MAC SPACE                                   &mo POINTER_LAYER                              &mo CONNECTIVITY_LAYER                            &dictation_change_mode
             >;
 
             sensor-bindings =
@@ -786,18 +1040,18 @@
         linux {
             display-name = "linux";
             bindings = <
+&trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans  &trans  &trans  &trans  &trans  &backspace_staged_hold_lnx
 &trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans                                    &trans                                    &trans                                    &delayed_tap_once_haptic_on_hold LC(F) F  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &delayed_tap_once_haptic_on_hold LC(A) A  &delayed_tap_once_haptic_on_hold LC(S) S  &trans                                    &delayed_tap_once_haptic_on_hold LC(F) F  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &delayed_tap_once_haptic_on_hold LC(Z) Z  &delayed_tap_once_haptic_on_hold LC(X) X  &delayed_tap_once_haptic_on_hold LC(C) C  &delayed_tap_once_haptic_on_hold LC(V) V  &trans  &none     &none   &trans  &trans  &trans  &trans  &trans  &trans
-                                                  &trans                                    &kp LGUI                                  &kp LALT                                  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+                                                  &trans                                    &kp LGUI                                  &kp LALT                                  &trans  &trans    &trans  &lt NAVIGATION_LAYER_LINUX SPACE  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp DOWN UP>;
         };
 
-        symbols_2 {
-            display-name = "symbols_2";
+        symbols {
+            display-name = "symbols";
             bindings = <
 &kp GRAVE  &brackets_pair_on_hold 0 LEFT_BRACKET  &parenthesis_pair_on_hold 0 LPAR  &kp RPAR                          &kp RIGHT_BRACKET                  &kp BSLH                        &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &curly_pair_on_hold 0 LBRC             &single_quote_pair_on_hold 0 SQT  &double_quote_pair_on_hold 0 DQT  &kp RBRC                           &kp PLUS                        &trans  &trans  &trans  &trans  &trans  &trans
@@ -809,12 +1063,25 @@
             sensor-bindings = <&inc_dec_kp A B>, <&inc_dec_kp BACKSPACE SPACE>;
         };
 
-        navigation {
-            display-name = "navigation";
+        navigation_mac {
+            display-name = "navigation_mac";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP  &kp LG(UP_ARROW)    &kp LA(UP)             &trans              &trans   &kp LA(BACKSPACE)
 &trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_DN  &kp LA(LEFT)        &kp UP                 &kp LA(RIGHT)       &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &left_staged_hold   &kp DOWN               &right_staged_hold  &kp END  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &left_staged_hold_mac   &kp DOWN               &right_staged_hold_mac  &kp END  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &kp LG(DOWN_ARROW)  &kp LS(LG(LC(RIGHT)))  &trans              &trans   &kp LS(ENTER)
+                &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans              &trans                 &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp RIGHT LEFT>;
+        };
+
+        navigation_lnx {
+            display-name = "navigation_lnx";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_UP  &kp LG(UP_ARROW)    &kp LA(UP)             &trans              &trans   &kp LC(BACKSPACE)
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp PG_DN  &kp LA(LEFT)        &kp UP                 &kp LA(RIGHT)       &trans   &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &kp HOME   &left_staged_hold_lnx   &kp DOWN               &right_staged_hold_lnx  &kp END  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans     &kp LG(DOWN_ARROW)  &kp LS(LG(LC(RIGHT)))  &trans              &trans   &kp LS(ENTER)
                 &trans  &trans  &trans  &trans  &trans    &trans  &trans     &trans              &trans                 &trans
             >;
@@ -867,10 +1134,10 @@
 
         layers {
             bindings = <
-&to 0  &to 1  &to 2  &to 3  &to 4  &to 0                     &to 5   &to 0  &to 6  &to 7  &none  &none
+&to MAC_BASE_LAYER  &to LINUX_LAYER  &to SYMBOLS_LAYER  &to NAVIGATION_LAYER_MAC  &to NAVIGATION_LAYER_LINUX  &to CONNECTIVITY_LAYER                     &to APP_ACTIONS_LAYER   &to MAC_BASE_LAYER  &to FN_AND_NUMBERS_LAYER  &to POINTER_LAYER  &none  &none
 &none  &none  &none  &none  &none  &none                     &none   &none  &none  &none  &none  &none
-&none  &none  &none  &none  &to 6  &none                     &none   &none  &none  &to 1  &none  &none
-&none  &to 0  &none  &none  &none  &none   &trans    &trans  &to 6   &to 0  &none  &none  &none  &none
+&none  &none  &none  &none  &to FN_AND_NUMBERS_LAYER  &none                     &none   &none  &none  &to LINUX_LAYER  &none  &none
+&none  &to MAC_BASE_LAYER  &none  &none  &none  &none   &trans    &trans  &to FN_AND_NUMBERS_LAYER   &to MAC_BASE_LAYER  &none  &none  &none  &none
               &none  &none  &none  &trans  &trans    &trans  &trans  &none  &none  &none
             >;
         };
@@ -896,14 +1163,54 @@
                 &trans  &trans  &trans                        &trans                             &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
+
+        app_switch_lnx {
+            bindings = <
+&app_switch_cancel  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp LS(TAB)  &kp TAB  &app_switch_confirm                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans
+            >;
+        };
+
+        window_switch_lnx {
+            bindings = <
+&window_switch_cancel  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp LS(GRAVE)  &kp GRAVE  &window_switch_confirm                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans
+            >;
+        };
+
+        app_switch_mac {
+            bindings = <
+&app_switch_cancel  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp LS(TAB)  &kp TAB  &app_switch_confirm                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans
+            >;
+        };
+
+        window_switch_mac {
+            bindings = <
+&window_switch_cancel  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp LS(GRAVE)  &kp GRAVE  &window_switch_confirm                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans     &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans                       &trans  &trans  &trans  &trans
+            >;
+        };
     };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
         to_layers_layer {
-            if-layers = <4 7>;
-            then-layer = <8>;
+            if-layers = <CONNECTIVITY_LAYER POINTER_LAYER>;
+            then-layer = <LAYERS_LAYER>;
         };
     };
 };
