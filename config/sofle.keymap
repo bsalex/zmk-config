@@ -234,13 +234,21 @@
         };
 
         copy_once_on_hold: copy_once_on_hold {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&copy_once_on_hold_inner>, <&kp C>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LGUI|MOD_LSFT|MOD_LALT)>;
+            keep-mods = <(MOD_LCTL|MOD_LGUI|MOD_LSFT|MOD_LALT)>;
+        };
+
+        copy_once_on_hold_inner: copy_once_on_hold_inner {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&copy_once>, <&kp>;
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <150>;
-            require-prior-idle-ms = <200>;
         };
 
         ctrl_esc: ctrl_esc {
@@ -848,7 +856,7 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_press>,
-                <&mo WINDOW_SWITCH_LAYER_MAC &kp LEFT_GUI>,
+                <&mo WINDOW_SWITCH_LAYER_MAC &kp LEFT_ALT>,
                 <&macro_tap>,
                 <&kp GRAVE>;
         };
@@ -858,7 +866,7 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_release>,
-                <&kp LEFT_ALT &kp LEFT_GUI &mo WINDOW_SWITCH_LAYER_LNX &mo WINDOW_SWITCH_LAYER_MAC>,
+                <&kp LEFT_ALT &mo WINDOW_SWITCH_LAYER_LNX &mo WINDOW_SWITCH_LAYER_MAC>,
                 <&macro_tap>;
         };
 
@@ -869,7 +877,7 @@
                 <&macro_tap>,
                 <&kp ESC>,
                 <&macro_release>,
-                <&kp LEFT_ALT &kp LEFT_GUI &mo WINDOW_SWITCH_LAYER_LNX &mo WINDOW_SWITCH_LAYER_MAC>;
+                <&kp LEFT_ALT &mo WINDOW_SWITCH_LAYER_LNX &mo WINDOW_SWITCH_LAYER_MAC>;
         };
 
         app_switch_to_window_switch_lnx: app_switch_to_window_switch_lnx {
