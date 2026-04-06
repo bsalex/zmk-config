@@ -32,8 +32,8 @@
 #define WINDOW_SWITCH_LAYER_LNX 13
 #define APP_SWITCH_LAYER_MAC 14
 #define WINDOW_SWITCH_LAYER_MAC 15
-#define SWITCH_COMBOS_TIMEOUT_MS 60
-#define SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS 150
+#define SWITCH_COMBOS_TIMEOUT_MS 70
+#define SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS 400
 #define STAGED_HOLD_TIMEOUT_MS 2000
 #define STAGED_HOLD_WORD_STEP_MS 100
 
@@ -245,6 +245,24 @@
         copy_once_on_hold_inner: copy_once_on_hold_inner {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&copy_once>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+        };
+
+        copy_once_on_hold_lnx: copy_once_on_hold_lnx {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&copy_once_on_hold_inner_lnx 0 C>, <&kp C>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_LGUI|MOD_LSFT|MOD_LALT)>;
+            keep-mods = <(MOD_LCTL|MOD_LGUI|MOD_LSFT|MOD_LALT)>;
+        };
+
+        copy_once_on_hold_inner_lnx: copy_once_on_hold_inner_lnx {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&copy_once_lnx>, <&kp>;
 
             #binding-cells = <2>;
             flavor = "tap-preferred";
@@ -576,6 +594,12 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(C) &haptic_long_press>;
+        };
+
+        copy_once_lnx: copy_once_lnx {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(C) &haptic_long_press>;
         };
 
         triple_backtick: triple_backtick {
@@ -1078,7 +1102,7 @@
 &trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans                            &trans  &trans  &trans  &trans  &backspace_staged_hold_lnx
 &trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans                            &trans  &trans  &trans  &trans  &trans
 &trans  &delayed_tap_once_haptic_on_hold LC(A) A  &delayed_tap_once_haptic_on_hold LC(S) S  &trans                                    &delayed_tap_once_haptic_on_hold LC(F) F  &trans                    &trans                            &trans  &trans  &trans  &trans  &trans
-&trans  &delayed_tap_once_haptic_on_hold LC(Z) Z  &delayed_tap_once_haptic_on_hold LC(X) X  &delayed_tap_once_haptic_on_hold LC(C) C  &delayed_tap_once_haptic_on_hold LC(V) V  &trans  &none     &none   &trans                            &trans  &trans  &trans  &trans  &trans
+&trans  &delayed_tap_once_haptic_on_hold LC(Z) Z  &delayed_tap_once_haptic_on_hold LC(X) X  &copy_once_on_hold_lnx  &delayed_tap_once_haptic_on_hold LC(V) V  &trans  &lt MACROS_LAYER LC(LA(H))     &none   &trans                            &trans  &trans  &trans  &trans  &trans
                                                   &trans                                    &kp LGUI                                  &kp LALT                                  &trans  &trans    &trans  &lt NAVIGATION_LAYER_LINUX SPACE  &trans  &trans  &trans
             >;
 
@@ -1201,40 +1225,40 @@
 
         app_switch_lnx {
             bindings = <
-&app_switch_cancel  &trans  &trans  &trans       &trans   &trans                                 &trans  &trans  &trans  &trans  &trans  &trans
+&app_switch_cancel  &trans  &trans  &trans       &trans   &trans                                 &trans  &trans  &trans  &trans  &trans  &app_switch_cancel
 &trans              &trans  &trans  &trans       &trans   &trans                                 &trans  &trans  &trans  &trans  &trans  &trans
 &trans              &trans  &trans  &kp LS(TAB)  &kp TAB  &app_switch_confirm                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans              &trans  &trans  &trans       &trans   &trans               &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans              &trans  &trans  &trans       &trans   &trans               &trans    &trans  &trans  &trans  &trans  &trans  &trans  &app_switch_confirm
                             &trans  &trans       &trans   &trans               &trans    &trans  &trans  &trans
             >;
         };
 
         window_switch_lnx {
             bindings = <
-&window_switch_cancel  &trans  &trans  &trans         &trans     &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&window_switch_cancel  &trans  &trans  &trans         &trans     &trans                                    &trans  &trans  &trans  &trans  &trans  &window_switch_cancel
 &trans                 &trans  &trans  &kp LS(GRAVE)  &kp GRAVE  &window_switch_confirm                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans                 &trans  &trans  &trans         &trans     &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans                 &trans  &trans  &trans         &trans     &trans                  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans                 &trans  &trans  &trans         &trans     &trans                  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &window_switch_confirm
                                &trans  &trans         &trans     &none                   &trans    &trans  &trans  &trans
             >;
         };
 
         app_switch_mac {
             bindings = <
-&app_switch_cancel  &trans  &trans  &trans       &trans   &trans                                 &trans  &trans  &trans  &trans  &trans  &trans
+&app_switch_cancel  &trans  &trans  &trans       &trans   &trans                                 &trans  &trans  &trans  &trans  &trans  &app_switch_cancel
 &trans              &trans  &trans  &trans       &trans   &trans                                 &trans  &trans  &trans  &trans  &trans  &trans
 &trans              &trans  &trans  &kp LS(TAB)  &kp TAB  &app_switch_confirm                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans              &trans  &trans  &trans       &trans   &trans               &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans              &trans  &trans  &trans       &trans   &trans               &trans    &trans  &trans  &trans  &trans  &trans  &trans  &app_switch_confirm
                             &trans  &trans       &trans   &none                &trans    &trans  &trans  &trans
             >;
         };
 
         window_switch_mac {
             bindings = <
-&window_switch_cancel  &trans  &trans  &trans         &trans     &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&window_switch_cancel  &trans  &trans  &trans         &trans     &trans                                    &trans  &trans  &trans  &trans  &trans  &window_switch_cancel
 &trans                 &trans  &trans  &kp LS(GRAVE)  &kp GRAVE  &window_switch_confirm                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans                 &trans  &trans  &trans         &trans     &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans                 &trans  &trans  &trans         &trans     &trans                  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans                 &trans  &trans  &trans         &trans     &trans                  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &window_switch_confirm
                                &trans  &trans         &trans     &none                   &trans    &trans  &trans  &trans
             >;
         };
