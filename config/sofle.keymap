@@ -1009,7 +1009,7 @@
 
         window_switch_lnx {
             bindings = <&window_switch_start_lnx>;
-            key-positions = <15 16>;
+            key-positions = <15 28>;
             slow-release;
             require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
             timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
@@ -1018,7 +1018,7 @@
 
         window_switch_mac {
             bindings = <&window_switch_start_mac>;
-            key-positions = <15 16>;
+            key-positions = <15 28>;
             slow-release;
             require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
             timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
@@ -1043,7 +1043,7 @@
 
         window_switch_on_window_switch_layer_lnx {
             bindings = <&window_switch_cancel>;
-            key-positions = <15 16>;
+            key-positions = <15 28>;
             require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
             timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
             layers = <WINDOW_SWITCH_LAYER_LNX>;
@@ -1052,7 +1052,7 @@
 
         window_switch_on_window_switch_layer_mac {
             bindings = <&window_switch_cancel>;
-            key-positions = <15 16>;
+            key-positions = <15 28>;
             require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
             timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
             layers = <WINDOW_SWITCH_LAYER_MAC>;
@@ -1061,7 +1061,7 @@
 
         window_switch_on_app_switch_layer_lnx {
             bindings = <&app_switch_to_window_switch_lnx>;
-            key-positions = <15 16>;
+            key-positions = <15 28>;
             require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
             timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
             layers = <APP_SWITCH_LAYER_LNX>;
@@ -1070,7 +1070,7 @@
 
         window_switch_on_app_switch_layer_mac {
             bindings = <&app_switch_to_window_switch_mac>;
-            key-positions = <15 16>;
+            key-positions = <15 28>;
             require-prior-idle-ms = <SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS>;
             timeout-ms = <SWITCH_COMBOS_TIMEOUT_MS>;
             layers = <APP_SWITCH_LAYER_MAC>;
@@ -1099,11 +1099,11 @@
         linux {
             display-name = "linux";
             bindings = <
-&trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans                            &trans  &trans  &trans  &trans  &backspace_staged_hold_lnx
-&trans  &trans                                    &trans                                    &trans                                    &trans                                    &trans                    &trans                            &trans  &trans  &trans  &trans  &trans
-&trans  &delayed_tap_once_haptic_on_hold LC(A) A  &delayed_tap_once_haptic_on_hold LC(S) S  &trans                                    &delayed_tap_once_haptic_on_hold LC(F) F  &trans                    &trans                            &trans  &trans  &trans  &trans  &trans
-&trans  &delayed_tap_once_haptic_on_hold LC(Z) Z  &delayed_tap_once_haptic_on_hold LC(X) X  &copy_once_on_hold_lnx  &delayed_tap_once_haptic_on_hold LC(V) V  &trans  &lt MACROS_LAYER LC(LA(H))     &none   &trans                            &trans  &trans  &trans  &trans  &trans
-                                                  &trans                                    &kp LGUI                                  &kp LALT                                  &trans  &trans    &trans  &lt NAVIGATION_LAYER_LINUX SPACE  &trans  &trans  &trans
+&trans  &trans                                    &trans                                    &trans                  &trans                                    &trans                                        &trans                            &trans  &trans  &trans  &trans  &backspace_staged_hold_lnx
+&trans  &trans                                    &trans                                    &trans                  &trans                                    &trans                                        &trans                            &trans  &trans  &trans  &trans  &trans
+&trans  &delayed_tap_once_haptic_on_hold LC(A) A  &delayed_tap_once_haptic_on_hold LC(S) S  &trans                  &delayed_tap_once_haptic_on_hold LC(F) F  &trans                                        &trans                            &trans  &trans  &trans  &trans  &trans
+&trans  &delayed_tap_once_haptic_on_hold LC(Z) Z  &delayed_tap_once_haptic_on_hold LC(X) X  &copy_once_on_hold_lnx  &delayed_tap_once_haptic_on_hold LC(V) V  &trans  &lt MACROS_LAYER LC(LA(H))    &none   &trans                            &trans  &trans  &trans  &trans  &trans
+                                                  &trans                                    &kp LGUI                &kp LALT                                  &trans  &trans                        &trans  &lt NAVIGATION_LAYER_LINUX SPACE  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp DOWN UP>;
