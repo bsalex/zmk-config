@@ -1256,8 +1256,8 @@
         window_switch_mac {
             bindings = <
 &window_switch_cancel  &trans  &trans  &trans         &trans     &trans                                    &trans  &trans  &trans  &trans  &trans  &window_switch_cancel
-&trans                 &trans  &trans  &kp LS(GRAVE)  &kp GRAVE  &window_switch_confirm                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans                 &trans  &trans  &trans         &trans     &trans                                    &trans  &trans  &trans  &trans  &trans  &trans
+&trans                 &trans  &trans  &kp LS(GRAVE)  &kp GRAVE  &window_switch_confirm                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans                 &trans  &trans  &trans         &trans     &trans                  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &window_switch_confirm
                                &trans  &trans         &trans     &none                   &trans    &trans  &trans  &trans
             >;
