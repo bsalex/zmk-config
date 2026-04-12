@@ -7,6 +7,10 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 10    // default: 10
 
+#define ZMK_POINTING_SLOW_MOVE_VAL 500
+#define ZMK_POINTING_NORMAL_MOVE_VAL 1000
+#define ZMK_POINTING_FAST_MOVE_VAL 3000
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
@@ -25,13 +29,14 @@
 #define APP_ACTIONS_LAYER 6
 #define FN_AND_NUMBERS_LAYER 7
 #define POINTER_LAYER 8
-#define LAYERS_LAYER 9
-#define UNDO_MAC_LAYER 10
-#define MACROS_LAYER 11
-#define APP_SWITCH_LAYER_LNX 12
-#define WINDOW_SWITCH_LAYER_LNX 13
-#define APP_SWITCH_LAYER_MAC 14
-#define WINDOW_SWITCH_LAYER_MAC 15
+#define POINTER_FAST_LAYER 9
+#define LAYERS_LAYER 10
+#define UNDO_MAC_LAYER 11
+#define MACROS_LAYER 12
+#define APP_SWITCH_LAYER_LNX 13
+#define WINDOW_SWITCH_LAYER_LNX 14
+#define APP_SWITCH_LAYER_MAC 15
+#define WINDOW_SWITCH_LAYER_MAC 16
 #define SWITCH_COMBOS_TIMEOUT_MS 70
 #define SWITCH_COMBOS_REQUIRE_PRIOR_IDLE_MS 400
 #define STAGED_HOLD_TIMEOUT_MS 2000
@@ -376,38 +381,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             flavor = "tap-preferred";
-        };
-
-        mouse_move_up: mouse_move_up {
-            compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_UP>, <&mmv MOVE_Y(-3000)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        mouse_move_right: mouse_move_right {
-            compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(3000)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        mouse_move_down: mouse_move_down {
-            compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_Y(3000)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
-        };
-
-        mouse_move_left: mouse_move_left {
-            compatible = "zmk,behavior-mod-morph";
-            bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_X(-3000)>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL)>;
         };
 
         parenthesis_pair_on_hold: parenthesis_pair_on_hold {
@@ -937,6 +910,11 @@
             key-positions = <28 27 29>;
         };
 
+        to_pointer_fast_layer {
+            bindings = <&mo POINTER_FAST_LAYER>;
+            key-positions = <28 27 29>;
+        };
+
         app_switch_lnx {
             bindings = <&app_switch_start_lnx>;
             key-positions = <28 27>;
@@ -1184,8 +1162,18 @@
         pointer {
             bindings = <
 &trans  &trans     &trans  &trans  &trans  &trans                    &kp PAGE_UP     &msc SCRL_LEFT    &msc SCRL_RIGHT   &trans             &trans  &trans
-&trans  &trans     &trans  &trans  &trans  &trans                    &msc SCRL_UP    &mkp LCLK         &mouse_move_up    &mkp RCLK          &trans  &trans
-&trans  &kp LCTRL  &trans  &trans  &trans  &trans                    &msc SCRL_DOWN  &mouse_move_left  &mouse_move_down  &mouse_move_right  &trans  &trans
+&trans  &trans     &trans  &trans  &trans  &trans                    &msc SCRL_UP    &mkp LCLK         &mmv MOVE_Y(-ZMK_POINTING_NORMAL_MOVE_VAL)      &mkp RCLK          &trans  &trans
+&trans  &trans     &trans  &trans  &trans  &trans                    &msc SCRL_DOWN  &mmv MOVE_X(-ZMK_POINTING_NORMAL_MOVE_VAL)     &mmv MOVE_Y(ZMK_POINTING_NORMAL_MOVE_VAL)     &mmv MOVE_X(ZMK_POINTING_NORMAL_MOVE_VAL)   &trans  &trans
+&trans  &trans     &trans  &trans  &trans  &trans  &trans    &trans  &kp PAGE_DOWN   &trans            &trans            &trans             &trans  &trans
+                   &trans  &trans  &trans  &trans  &trans    &trans  &mkp LCLK       &trans            &trans            &trans
+            >;
+        };
+
+        pointer_fast {
+            bindings = <
+&trans  &trans     &trans  &trans  &trans  &trans                    &kp PAGE_UP     &msc SCRL_LEFT    &msc SCRL_RIGHT   &trans             &trans  &trans
+&trans  &trans     &trans  &trans  &trans  &trans                    &msc SCRL_UP    &mkp LCLK         &mmv MOVE_Y(-ZMK_POINTING_FAST_MOVE_VAL)     &mkp RCLK          &trans  &trans
+&trans  &trans     &trans  &trans  &trans  &trans                    &msc SCRL_DOWN  &mmv MOVE_X(-ZMK_POINTING_FAST_MOVE_VAL)     &mmv MOVE_Y(ZMK_POINTING_FAST_MOVE_VAL)     &mmv MOVE_X(ZMK_POINTING_FAST_MOVE_VAL)   &trans  &trans
 &trans  &trans     &trans  &trans  &trans  &trans  &trans    &trans  &kp PAGE_DOWN   &trans            &trans            &trans             &trans  &trans
                    &trans  &trans  &trans  &trans  &trans    &trans  &mkp LCLK       &trans            &trans            &trans
             >;
