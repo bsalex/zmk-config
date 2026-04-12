@@ -906,12 +906,12 @@
 
         to_pointer_layer {
             bindings = <&mo POINTER_LAYER>;
-            key-positions = <28 27 29>;
+            key-positions = <28 27 26 54>;
         };
 
         to_pointer_fast_layer {
             bindings = <&mo POINTER_FAST_LAYER>;
-            key-positions = <15 16 17>;
+            key-positions = <16 14 15 54>;
         };
 
         app_switch_lnx {
