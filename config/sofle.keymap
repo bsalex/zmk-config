@@ -934,7 +934,7 @@
 
         to_pointer_layer {
             bindings = <&mo POINTER_LAYER>;
-            key-positions = <28 27 26 25>;
+            key-positions = <28 27 29>;
         };
 
         app_switch_lnx {
