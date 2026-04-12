@@ -373,6 +373,15 @@
             flavor = "tap-preferred";
         };
 
+        delayed_tap_once_haptic_on_hold_short: delayed_tap_once_haptic_on_hold_short {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&key_once_haptic_macro>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
+
         delayed_tap_once_haptic_on_hold_right: delayed_tap_once_haptic_on_hold_right {
             compatible = "zmk,behavior-hold-tap";
             bindings = <&key_once_haptic_macro_right>, <&kp>;
@@ -534,6 +543,15 @@
         dm_reset: dm_reset {
             compatible = "zmk,behavior-dm-reset";
             #binding-cells = <0>;
+        };
+
+        dictation_home_row_on_hold: dictation_home_row_on_hold {
+            compatible = "zmk,behavior-hold-tap";
+            bindings = <&dictation_home_row>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+            flavor = "tap-preferred";
         };
     };
 
@@ -782,13 +800,13 @@
         haptic_long_press: haptic_long_press {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&haptic_drv2605 7>;
+            bindings = <&haptic_drv2605 9>;
         };
 
         haptic_long_press_right: haptic_long_press_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&haptic_drv2605_right 7>;
+            bindings = <&haptic_drv2605_right 9>;
         };
 
         mouse_reset_position: mouse_reset_position {
@@ -898,6 +916,14 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&window_switch_cancel &app_switch_start_mac>;
+        };
+
+        dictation_home_row: dictation_home_row {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LA(SPACE)>,
+                <&haptic_drv2605 13>;
         };
     };
 
@@ -1143,8 +1169,8 @@
         app_actions {
             bindings = <
 &trans  &kp F13    &kp F14    &kp F15          &kp F16       &kp F17                        &kp LA(F13)    &kp LA(F14)    &kp LA(F15)          &kp LA(F16)       &kp LA(F17)      &kp LA(KP_DOT)
-&trans  &kp F18    &kp F19    &kp KP_MULTIPLY  &kp KP_MINUS  &kp KP_PLUS                    &kp LA(F18)    &kp LA(F19)    &kp LA(KP_MULTIPLY)  &kp LA(KP_MINUS)  &kp LA(KP_PLUS)  &kp LA(KP_DIVIDE)
-&trans  &kp KP_N0  &kp KP_N1  &kp KP_N2        &kp KP_N3     &kp KP_N4                      &kp LA(KP_N0)  &kp LA(KP_N1)  &kp LA(KP_N2)        &kp LA(KP_N3)     &kp LA(KP_N4)    &kp LA(KP_LPAR)
+&trans  &kp F18    &kp F19    &delayed_tap_once_haptic_on_hold_short KP_ENTER KP_MULTIPLY  &kp KP_MINUS  &kp KP_PLUS                    &kp LA(F18)    &kp LA(F19)    &kp LA(KP_MULTIPLY)  &kp LA(KP_MINUS)  &kp LA(KP_PLUS)  &kp LA(KP_DIVIDE)
+&trans  &dictation_home_row_on_hold 0 KP_N0  &kp KP_N1  &kp KP_N2        &kp KP_N3     &kp KP_N4                      &kp LA(KP_N0)  &kp LA(KP_N1)  &kp LA(KP_N2)        &kp LA(KP_N3)     &kp LA(KP_N4)    &kp LA(KP_LPAR)
 &trans  &kp KP_N5  &kp KP_N6  &kp KP_N7        &kp KP_N8     &kp KP_N9    &trans    &trans  &kp LA(KP_N5)  &kp LA(KP_N6)  &kp LA(KP_N7)        &kp LA(KP_N8)     &kp LA(KP_N9)    &kp LG(ENTER)
                    &trans     &trans           &trans        &kp SPACE    &trans    &trans  &trans         &trans         &trans               &trans
             >;
