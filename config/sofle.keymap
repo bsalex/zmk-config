@@ -921,9 +921,7 @@
         dictation_home_row: dictation_home_row {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&kp LA(SPACE)>,
-                <&haptic_drv2605 13>;
+            bindings = <&kp LA(SPACE) &haptic_drv2605 13>;
         };
     };
 
@@ -1119,8 +1117,8 @@
         symbols {
             display-name = "symbols";
             bindings = <
-&kp GRAVE  &brackets_pair_on_hold 0 LEFT_BRACKET  &parenthesis_pair_on_hold 0 LPAR  &kp RPAR                          &kp RIGHT_BRACKET                  &kp BSLH                        &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &curly_pair_on_hold 0 LBRC             &single_quote_pair_on_hold 0 SQT  &double_quote_pair_on_hold 0 DQT  &kp RBRC                           &kp PLUS                        &trans  &trans  &trans  &trans  &trans  &trans
+&kp GRAVE  &curly_pair_on_hold 0 LEFT_BRACE       &parenthesis_pair_on_hold 0 LPAR  &kp RPAR                          &kp RIGHT_BRACE                    &kp BSLH                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &brackets_pair_on_hold 0 LEFT_BRACKET  &single_quote_pair_on_hold 0 SQT  &double_quote_pair_on_hold 0 DQT  &kp RIGHT_BRACKET                  &kp PLUS                        &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &kp CARET                              &fat_arrow_on_hold 0 EQUAL        &kp LS(UNDER)                     &string_with_var_on_hold 0 DOLLAR  &kp AMPS                        &trans  &trans  &trans  &trans  &trans  &trans
 &trans     &angle_pair_on_hold 0 LT               &pipe_arrow_on_hold 0 PIPE        &dot_arrow 0 MINUS                &kp GT                             &kp SLASH  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
                                                   &trans                            &trans                            &trans                             &trans     &kp SPACE    &trans  &trans  &trans  &trans  &trans
@@ -1168,11 +1166,11 @@
 
         app_actions {
             bindings = <
-&trans  &kp F13    &kp F14    &kp F15          &kp F16       &kp F17                        &kp LA(F13)    &kp LA(F14)    &kp LA(F15)          &kp LA(F16)       &kp LA(F17)      &kp LA(KP_DOT)
-&trans  &kp F18    &kp F19    &delayed_tap_once_haptic_on_hold_short KP_ENTER KP_MULTIPLY  &kp KP_MINUS  &kp KP_PLUS                    &kp LA(F18)    &kp LA(F19)    &kp LA(KP_MULTIPLY)  &kp LA(KP_MINUS)  &kp LA(KP_PLUS)  &kp LA(KP_DIVIDE)
-&trans  &dictation_home_row_on_hold 0 KP_N0  &kp KP_N1  &kp KP_N2        &kp KP_N3     &kp KP_N4                      &kp LA(KP_N0)  &kp LA(KP_N1)  &kp LA(KP_N2)        &kp LA(KP_N3)     &kp LA(KP_N4)    &kp LA(KP_LPAR)
-&trans  &kp KP_N5  &kp KP_N6  &kp KP_N7        &kp KP_N8     &kp KP_N9    &trans    &trans  &kp LA(KP_N5)  &kp LA(KP_N6)  &kp LA(KP_N7)        &kp LA(KP_N8)     &kp LA(KP_N9)    &kp LG(ENTER)
-                   &trans     &trans           &trans        &kp SPACE    &trans    &trans  &trans         &trans         &trans               &trans
+&trans  &kp F13                              &kp F14    &kp F15                                                      &kp F16       &kp F17                        &kp LA(F13)    &kp LA(F14)    &kp LA(F15)          &kp LA(F16)       &kp LA(F17)      &kp LA(KP_DOT)
+&trans  &kp F18                              &kp F19    &delayed_tap_once_haptic_on_hold_short KP_ENTER KP_MULTIPLY  &kp KP_MINUS  &kp KP_PLUS                    &kp LA(F18)    &kp LA(F19)    &kp LA(KP_MULTIPLY)  &kp LA(KP_MINUS)  &kp LA(KP_PLUS)  &kp LA(KP_DIVIDE)
+&trans  &dictation_home_row_on_hold 0 KP_N0  &kp KP_N1  &kp KP_N2                                                    &kp KP_N3     &kp KP_N4                      &kp LA(KP_N0)  &kp LA(KP_N1)  &kp LA(KP_N2)        &kp LA(KP_N3)     &kp LA(KP_N4)    &kp LA(KP_LPAR)
+&trans  &kp KP_N5                            &kp KP_N6  &kp KP_N7                                                    &kp KP_N8     &kp KP_N9    &trans    &trans  &kp LA(KP_N5)  &kp LA(KP_N6)  &kp LA(KP_N7)        &kp LA(KP_N8)     &kp LA(KP_N9)    &kp LG(ENTER)
+                                             &trans     &trans                                                       &trans        &kp SPACE    &trans    &trans  &trans         &trans         &trans               &trans
             >;
 
             sensor-bindings = <&inc_dec_kp A Z>, <&inc_dec_kp LA(F18) LA(F19)>;
